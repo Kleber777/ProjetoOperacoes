@@ -1,0 +1,855 @@
+﻿<UserControl x:Class="ProjetoOperacoes.View.PrincipalView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local2="clr-namespace:ProjetoOperacoes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <!--USADO NOS STYLES PARA ALTURA-->
+
+        <!--USADO NOS STYLES PARA LARGURA-->
+        <local2:ResponsiveApplicationConverter x:Key="Teste"/>
+
+        <!--#region Medidas para o Menu de Produtos-->
+
+        <!--TextBox Menu Produto-->
+        <Style TargetType="TextBox" x:Key="TextBoxMenuProduto">
+
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="190"/>
+
+            <Style.Triggers>
+
+                <!--VALOR PARA RESOLUÇÃO 1366X768-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="355"/>
+                    <!--<Setter Property="Width" Value="220"/>-->
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <!--BOTÕES DO MENU DE PRODUTO-->
+        <Style x:Key="BotaoMenuProdutos" TargetType="Button">
+            <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
+
+            <Setter Property="Width"  Value="98"/>
+            <Setter Property="Height"  Value="98"/>
+            <Setter Property="Background" Value="#F1F0F7"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Style.Triggers>
+
+                <!--<Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>-->
+
+                <!--VALOR PARA RESOLUÇÃO 1152X846-->
+                <!--
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1024}"
+                                               Value="True">
+
+                    <Setter Property="Width"  Value="110"/>
+                    <Setter Property="Height" Value="110"/>
+                    <Setter Property="Background" Value="#F1F0F7"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+
+                </DataTrigger>
+
+
+                -->
+                <!--VALOR PARA RESOLUÇÃO 1280XTantosOutros-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1152}"
+                                               Value="True">
+
+                    <Setter Property="Width"  Value="124"/>
+                    <Setter Property="Height"  Value="124"/>
+                    <Setter Property="Background" Value="#F1F0F7"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </DataTrigger>
+
+
+                <!--VALOR PARA RESOLUÇÃO 1366X768-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+
+                    <Setter Property="Width"   Value="135"/>
+                    <Setter Property="Height"  Value="135"/>
+                    <Setter Property="Background" Value="#F1F0F7"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </DataTrigger>
+
+
+                <!--VALOR PARA RESOLUÇÃO > 1366X768-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1366}"
+                                               Value="True">
+
+                    <Setter Property="Width"   Value="150"/>
+                    <Setter Property="Height"  Value="150"/>
+                    <Setter Property="Background" Value="#F1F0F7"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Arrow"/>
+
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <!--TAMANHO DA BORDA DO BOTÃO-->
+        <Style x:Key="BordaBotao" TargetType="Border">
+            <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
+            <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+            <Setter Property="Height" Value="95"/>
+            <Setter Property="Width" Value="95"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{Binding CorHexadecimal}"/>
+
+            <Style.Triggers>
+                <!--VALOR PARA RESOLUÇÃO 1152X846-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1024}"
+                                               Value="True">
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="100"/>
+                    <Setter Property="Width"  Value="100"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="{Binding CorHexadecimal}"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO 1280XTantosOutros-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1152}"
+                                               Value="True">
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="120"/>
+                    <Setter Property="Width"  Value="120"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="{Binding CorHexadecimal}"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO 1366X768-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="130"/>
+                    <Setter Property="Width"  Value="131"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="BorderBrush" Value="{Binding CorHexadecimal}"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO > 1366X768-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1366}"
+                                               Value="True">
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="140"/>
+                    <Setter Property="Width"  Value="140"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="{Binding CorHexadecimal}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--TAMANHO BULLET DECORATOR-->
+        <Style x:Key="BulletDecoratorButton" TargetType="BulletDecorator">
+
+
+            <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
+
+            <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+            <Setter Property="Height" Value="2"/>
+
+            <Style.Triggers>
+
+                <!--VALOR PARA RESOLUÇÃO 1152X846-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1024}"
+                                               Value="True">
+
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="2"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO 1280XTantosOutros-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1152}"
+                                               Value="True">
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO 1366X768-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="5"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--TAMANHO BORDA IMAGEM-->
+        <Style x:Key="BordaImagemButton" TargetType="Border">
+
+
+            <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
+
+            <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+            <Setter Property="Height" Value="60"/>
+
+            <Style.Triggers>
+
+                <!--VALOR PARA RESOLUÇÃO 1152X846-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal,   
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1024}"
+                                               Value="True">
+
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="60"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO 1280XTantosOutros-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1152}"
+                                               Value="True">
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="70"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO 1366X768-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="70"/>
+
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO > 1366X768-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1366}"
+                                               Value="True">
+                    <Setter Property="Background"  Value="{Binding CorHexadecimal}"/>
+                    <Setter Property="Height" Value="80"/>
+
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--TAMANHO IMAGEM-->
+        <Style x:Key="ImagemButton" TargetType="Image">
+
+
+            <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
+
+            <Setter Property="Source"  Value="{Binding Icone}"/>
+            <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+            <Setter Property="Width" Value="100"/>
+
+            <Style.Triggers>
+
+                <!--VALOR PARA RESOLUÇÃO 1152X846-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1024}"
+                                               Value="True">
+
+                    <Setter Property="Source"  Value="{Binding Icone}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Width" Value="100"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO 1280XTantosOutros-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1152}"
+                                               Value="True">
+
+                    <Setter Property="Source"  Value="{Binding Icone}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Width" Value="125"/>
+                </DataTrigger>
+
+
+                <!--VALOR PARA RESOLUÇÃO 1366X768-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+
+                    <Setter Property="Source"  Value="{Binding Icone}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Width" Value="125"/>
+
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO > 1366X768-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1366}"
+                                               Value="True">
+
+                    <Setter Property="Source"  Value="{Binding Icone}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Width" Value="140"/>
+
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--TAMANHO DA FONTE-->
+        <Style x:Key="FontButton" TargetType="TextBlock">
+
+
+            <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
+
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <!--<Setter Property="Foreground" Value="{Binding CorLetra}"/>-->
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+
+            <Style.Triggers>
+
+                <!--VALOR PARA RESOLUÇÃO 1152X846-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1024}"
+                                               Value="True">
+
+                    <Setter Property="FontSize" Value="11"/>
+                    <Setter Property="Foreground" Value="{Binding CorLetra}"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+
+
+                <!--VALOR PARA RESOLUÇÃO 1280XTantosOutros-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1152}"
+                                               Value="True">
+
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="Foreground" Value="{Binding CorLetra}"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+
+
+                <!--VALOR PARA RESOLUÇÃO 1366X768-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="Foreground" Value="{Binding CorLetra}"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+
+                <!--VALOR PARA RESOLUÇÃO > 1366X768-->
+
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1366}"
+                                               Value="True">
+
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="Foreground" Value="{Binding CorLetra}"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+        <!--#endregion-->
+
+        <!--BOTÕES CANCELAR E PAGAR DO PAINEL DO CARRINHO-->
+        <Style x:Key="BotaoPainelCarrinho" TargetType="Button">
+
+            <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
+            <Setter Property="Height"  Value="80"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width"  Value="150"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Style.Triggers>
+                <!--VALOR PADRÃO PARA RESOLUÇÃO  1366X768-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1280}"
+                                               Value="True">
+
+                    <!--<Setter Property="Height"  Value="80"/>-->
+                    <!--<Setter Property="FontSize" Value="16"/>-->
+                    <Setter Property="Width"  Value="Auto"/>
+                </DataTrigger>
+
+                <!--VALOR PADRÃO PARA RESOLUÇÃO > 1366X768-->
+                <DataTrigger Binding="{Binding Path=ActualWidth, 
+                                               ElementName=GridPrincipal, 
+                                               Converter={StaticResource Teste},
+                                               ConverterParameter=1366}"
+                                               Value="True">
+
+                    <Setter Property="Height"  Value="80"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="Width"  Value="180"/>
+                </DataTrigger>
+            </Style.Triggers>
+
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="GridPrincipal" Background="#F1F0F7">
+
+        <!--Definição das colunas-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="760"/>
+            <ColumnDefinition Width="2*"/>
+            <!--<ColumnDefinition Width="100"/>-->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.1*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+
+        <!--MENU LOGO NEXT-MENU LOGO CLIENTE-->
+
+        <StackPanel Background="White" Grid.ColumnSpan="2"></StackPanel>
+
+        <!--MENU PRODUTOS-->
+        <Grid Grid.Column="0" Grid.Row="1" Background="#F1F0F7" Margin="5, 10, 5, 0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Background="#F1F0F7" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                <!--<Border Height="40" Width="40">
+                    <StackPanel>
+                        <Button   FontFamily="Segoe MDL2 Assets" FontSize="34" Background="White" BorderBrush="White" Content="&#xE76B;"/>
+                    </StackPanel>
+                </Border>-->
+                <!--<Border Margin="5,0,0,0" Height="40" Width="40" Background="White">
+                    <StackPanel>-->
+                <Button Width="40" Margin="5,0,0,0" CommandParameter="{Binding}" Command="{Binding VoltarLista}" x:Name="btnVoltarLista"  BorderBrush="White" Background="White">
+                    <Image Source="..\..\Icons\Voltar.png" Width="10" Height="30"/>
+                </Button>
+                <!--</StackPanel>
+                </Border>-->
+
+                <!--<Border  Margin="5,0,0,0" Height="40" Width="40" Background="White">
+                    <StackPanel>-->
+                <Button  Margin="5,0,0,0" Height="40"  Width="40" BorderBrush="White" Background="White">
+                    <Image Source="..\..\Icons\home.png" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <!--</StackPanel>
+                </Border>-->
+
+                <!--<Border  Margin="5,0,0,0" Height="40" Width="40" Background="White">
+                    <StackPanel>-->
+                <Button Margin="5,0,0,0" Width="40" Height="40" BorderBrush="Transparent" Background="White" BorderThickness="0">
+                    <Image Source="..\..\Icons\Grade.png"  Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <!--</StackPanel>
+                </Border>-->
+
+                <!--<Border  Margin="5,0,0,0" Height="40" Width="40" Background="White">
+                    <StackPanel>-->
+                <Button Margin="5,0,0,0" Width="40"  BorderBrush="White" Background="White"  HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                    <Image Source="..\..\Icons\ItensFavoritos.png" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <!--</StackPanel>
+                </Border>-->
+            </StackPanel>
+
+            <StackPanel Margin="0, 0, 5, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Orientation="Horizontal">
+                <Border BorderBrush="#A7C6FA" BorderThickness="2" CornerRadius="3" Height="40" Background="White">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Background="White"  Height="40" Style="{StaticResource TextBoxMenuProduto}" VerticalContentAlignment="Center" TextChanged="txtbSearch_TextChanged" x:Name="txtbSearch"></TextBox>
+                        <Image Source="..\..\Icons\icon_search.png" Width="40" Height="15"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <Grid Grid.Row="1" Grid.RowSpan="2" Background="#F1F0F7" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ScrollViewer x:Name="sV1" VerticalScrollBarVisibility="Hidden">
+                    <ItemsControl Background="#F1F0F7" x:Name="listaProdutoView" ItemsSource="{Binding ListaContas}" HorizontalAlignment="Left">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Background="#F1F0F7" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                                    <Button  Style="{StaticResource BotaoMenuProdutos}" Command="{Binding ElementName=listaProdutoView,  Path=DataContext.IrParaTipoConta}" CommandParameter="{Binding}" Click="AtualizarViewModel_Click">
+                                        <Border Style="{StaticResource BordaBotao}">
+                                            <StackPanel>
+                                                <BulletDecorator Style="{StaticResource BulletDecoratorButton}"/>
+                                                <Border Style="{StaticResource BordaImagemButton}">
+                                                    <Image Style="{StaticResource ImagemButton}"/>
+                                                </Border>
+                                                <StackPanel Margin="0, 15, 0, 0">
+                                                    <!--<TextBlock Style="{StaticResource FontButton}" Text="{Binding ValorTotal}" />-->
+                                                    <TextBlock Style="{StaticResource FontButton}" Text="{Binding ValorTotal, StringFormat=N2, ConverterCulture=pt-br}" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+            <!--<RepeatButton Grid.ColumnSpan="2" Grid.Row="2" Click="DescerListaProduto_Click" Height="35" Grid.Column="0" FontFamily="Segoe MDL2 Assets" FontSize="26" Background="White" BorderBrush="White" Content="&#xE70D;"/>-->
+        </Grid>
+
+        <!--PAINEL DO CARRINHO-->
+        <Grid  Grid.Column="1" Grid.Row="1" Background="White" Margin="5, 10, 5, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--CONTENT TIPOS CONTAS-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding DadosConta}"/>
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="lstListaTiposContas" ItemsSource="{Binding ListaTiposContas}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding ElementName=lstListaTiposContas,  Path=DataContext.IrParaAplicacoes}" CommandParameter="{Binding .}" HorizontalAlignment="Center" Width="750" HorizontalContentAlignment="Left">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nome}"/>
+                                    <TextBlock Text=" "/>
+                                    <TextBlock Text="{Binding ValorTotalConta}"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <!--CONTENT APLICAÇÕES CONSOLIDADAS-->
+            <Border Grid.Row="1" Margin="0, 10, 0, 0" BorderBrush="Black" BorderThickness="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="APLICAÇÕES CONSOLIDADAS"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Text="DESCRIÇÃO" Width="400"/>
+                        <TextBlock Text="PARCELAS" Width="100"/>
+                        <TextBlock Text="VALOR INDIVIDUAL" Width="100"/>
+                        <TextBlock Text="VALOR TOTAL" Width="100" HorizontalAlignment="Right"  Margin="20, 0, 0, 0"/>
+                    </StackPanel>
+
+                    <ListView Grid.Row="2" x:Name="lstAplicacaoConsolidada" ItemsSource="{Binding ListaConsolidada}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Descricao}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBlock Grid.Row="3" Text="Total Aplicações Futuras Consolidadas"/>
+                    <TextBlock Grid.Row="3" Text="{Binding TotalComAplicacaoFuturaConsolidada}" HorizontalAlignment="Right"/>
+                </Grid>
+            </Border>
+
+            <!--CONTENT APLICAÇÕES FUTURAS-->
+            <Border  Grid.Row="2" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="APLICAÇÕES FUTURAS"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Text="DESCRIÇÃO" Width="400"/>
+                        <TextBlock Text="PARCELAS" Width="100"/>
+                        <TextBlock Text="VALOR INDIVIDUAL" Width="100"/>
+                        <TextBlock Text="VALOR TOTAL" Width="100" HorizontalAlignment="Right"  Margin="20, 0, 0, 0"/>
+                    </StackPanel>
+                    <ListView Grid.Row="2" x:Name="lstAplicacaoFutura" ItemsSource="{Binding ListaFutura}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Descricao}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBlock Grid.Row="3" Text="Total Aplicações Futura"/>
+                    <TextBlock Grid.Row="3" Text="{Binding TotalAplicacaoFutura}" HorizontalAlignment="Right"/>
+                </Grid>
+            </Border>
+
+            <!--CONTENT APLICAÇÕES EM ANDAMENTO-->
+            <Border Grid.Row="3" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="APLICAÇÕES EM ANDAMENTO"/>
+                    <ListView Grid.Row="1" x:Name="lstAplicacaoRealizada" ItemsSource="{Binding ListaEmAndamento}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Descricao}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Border>
+
+            <!--CONTENT APLICAÇÕES REALIZADAS-->
+            <Border Grid.Row="4" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="APLICAÇÕES REALIZADAS"/>
+                    <ListView Grid.Row="1" x:Name="lstAplicacaoRealizadas" ItemsSource="{Binding ListaRealizada}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Descricao}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Border>
+
+            <!--CONTENT TOTAIS-->
+            <Border Grid.Row="5" Margin="0, 10, 0, 0" Width="900" BorderThickness="2" BorderBrush="Black">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="TOTAIS"/>
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="TOTAL ATUAL: "/>
+                            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding TotalAtual, StringFormat=N2, ConverterCulture=pt-br}"/>
+
+                            <TextBlock Grid.Row="1" Text="Total com aplicação futura consolidada"/>
+                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="{Binding TotalComAplicacaoFuturaConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
+
+                            <TextBlock Grid.Row="2" Text="TOTAL COM APLICAÇÃO FUTURA"/>
+                            <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Text="{Binding TotalComAplicacaoFutura, StringFormat=N2, ConverterCulture=pt-br}"/>
+                        </Grid>
+                    </StackPanel>
+                    
+                    <TextBlock Grid.Column="1" Text="VALORES FINAIS"/>
+                    <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="FINAL ATUAL: "/>
+                            <TextBlock Grid.Column="1" Text="{Binding FinalTotalAtual, StringFormat=N2, ConverterCulture=pt-br}"/>
+
+                            <TextBlock Grid.Row="1" Text="Final com aplicação futura consolidada"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FinalTotalComAplicacaoFuturaConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
+
+                            <TextBlock Grid.Row="2" Text="FINAL COM APLICAÇÃO FUTURA"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding FinalTotalComAplicacaoFutura, StringFormat=N2, ConverterCulture=pt-br}"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!--CONTENT BOTÕES-->
+            <Grid Grid.Row="6" Background="White" Margin="15, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border CornerRadius="5" BorderThickness="1" Background="White" Height="80" Width="180" BorderBrush="#3B86FF">
+                    <Button Style="{StaticResource BotaoPainelCarrinho}" FontWeight="DemiBold"  Background="White" BorderBrush="Transparent" Foreground="White" FontSize="18">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="CANCELAR"/>
+                            <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="(F10)"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+
+                <Border Grid.Column="1" CornerRadius="5" BorderThickness="1" Background="#3B86FF" Height="80" Width="180" BorderBrush="#3B86FF">
+                    <Button  Command="{Binding GoTo2}" Style="{StaticResource BotaoPainelCarrinho}" FontWeight="DemiBold" Background="#3B86FF" BorderThickness="0" BorderBrush="Transparent" Foreground="White" FontSize="18">
+                        <StackPanel>
+                            <TextBlock Foreground="White"  HorizontalAlignment="Center" Text="PAGAR"/>
+                            <TextBlock Foreground="White"  HorizontalAlignment="Center" Text="(F9)"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,41 @@
+https://www.des1gnon.com/2020/02/top-sites-trabalho-freelance/
+Workana
+upwork
+fiverr
+Tem que ter informações do que é cada tipo de aplicação...
+
+1 - Contas 
+string id
+string nomebanco 
+string corhexadecimal
+string icone
+decimal valorTotal
+
+2 - TipoConta
+string id 
+string idContas
+string nome
+int tipoConta
+int quantidadeAplicações
+decimal valor
+
+3 - AplicacaoConsolidada
+string id 
+string idConta
+string idTipoConta
+string descricao
+int periodoConsolidacao
+string periodoTipoConsolidacao
+int parcelas
+decimal valorMensal 
+decimal valorTotalDestinado
+
+
+4 - AplicacaoFutura
+string id 
+string idConta
+string idTipoConta
+string descricao
+int parcelas
+decimal valorMensal 
+decimal valorTotalDestinado

@@ -1,0 +1,174 @@
+﻿using ProjetoOperacoes.InputModel.AplicacaoConsolidadaInputModel;
+using ProjetoOperacoes.InputModel.ContaInputModel;
+using ProjetoOperacoes.InputModel.TiposContaInputModel;
+using ProjetoOperacoes.ViewModel.NavigationPage;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
+
+namespace ProjetoOperacoes.ViewModel
+{
+    public class PrincipalViewModel : BaseViewModel, IPageViewModel
+    {
+        #region Operacao
+
+        #endregion
+        public static List<ContaInputModel> lstContas;
+        public static List<TiposContasInputModel> lstTiposContas;
+        public static List<AplicacaoConsolidadaInputModel> lstTAplicacaoConsolidada;
+
+        //private bool _isOpen;
+        //public bool IsOpen
+        //{
+        //    get
+        //    {
+        //        return _isOpen;
+        //    }
+        //    set
+        //    {
+        //        _isOpen = value;
+        //        OnPropertyChanged("IsOpen");
+        //    }
+
+        //}
+
+
+        //// Comando Para Mudar de Página
+        private ICommand _goTo2;
+        public ICommand GoTo2
+        {
+            get
+            {
+                return _goTo2 ?? (_goTo2 = new RelayCommand(x =>
+                {
+                    Mediator.Notify("GoToTestePage", "");
+                }));
+            }
+        }
+
+
+
+
+        public IrParaTipoContaCommand IrParaTipoConta { get; set; }
+        public IrParaAplicacoesCommand IrParaAplicacoes { get; set; }
+
+        public ObservableCollection<ContaInputModel> ListaContas { get; set; }
+        public ObservableCollection<TiposContasInputModel> ListaTiposContas { get; set; }
+        public ObservableCollection<AplicacaoConsolidadaInputModel> ListaConsolidada { get; set; }
+
+        public PrincipalViewModel()
+        {
+            IrParaTipoConta = new IrParaTipoContaCommand();
+            IrParaAplicacoes = new IrParaAplicacoesCommand();
+            ListaContas = new ObservableCollection<ContaInputModel>();
+            ListaTiposContas = new ObservableCollection<TiposContasInputModel>();
+            CarregarDados();
+
+        }
+
+        private void CarregarDados()
+        {
+            CarregarContas();
+            CarregarTiposContas();
+            CarregarContasConsolidadas();
+        }
+
+        private void CarregarContas()
+        {
+            try
+            {
+                 lstContas = new List<ContaInputModel>()
+                {
+                    new ContaInputModel("f1c67966-44f5-42a4-9234-f98de19ee091", "Itaú", "#EC7000", "../Images/Itau.png" , 107855.56M), /*10855.56M*/
+                    new ContaInputModel("f0062c82-a2b4-4d1f-8def-a9bd2546d322", "Mercado Pago", "#009FE3", "../Images/MercadoPago.png", 40000.00M),
+                    new ContaInputModel("8ba15d50-c8c3-4381-bbe2-e34bdbe03113", "PagSeguro", "#5CBD4C", "../Images/PagSeguro.png", 30000.00M),
+                    new ContaInputModel("7889eb71-e59c-422a-8ae6-698e1a678203", "PicPay", "#11C770", "../Images/PicPay.png", 200),
+                    new ContaInputModel("85c40d81-e63f-46a4-bade-c5bcdf130789", "PicPay", "#0000FF", "Icons/PicPay.png", 200)
+                };
+                foreach (var item in lstContas)
+                {
+                    ListaContas.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void CarregarTiposContas()
+        {
+            try
+            {
+                lstTiposContas = new List<TiposContasInputModel>()
+                {
+                    new TiposContasInputModel("15fdda04-7326-4f91-8cac-928708920710", "f1c67966-44f5-42a4-9234-f98de19ee091", "Conta Corrente", 1, null, 307046.97M), 
+                    new TiposContasInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "f1c67966-44f5-42a4-9234-f98de19ee091", "Conta Poupança", 2, null, 7128708.59M),
+                    new TiposContasInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "f0062c82-a2b4-4d1f-8def-a9bd2546d322", "Conta Corrente", 1, null, 7128708.59M),
+                    new TiposContasInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "8ba15d50-c8c3-4381-bbe2-e34bdbe03113", "Conta Corrente", 1, null, 7128708.59M),
+                    new TiposContasInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "7889eb71-e59c-422a-8ae6-698e1a678203", "Conta Corrente", 1, null, 7128708.59M),
+                    new TiposContasInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "85c40d81-e63f-46a4-bade-c5bcdf130789", "Conta Corrente", 1, null, 7128708.59M),
+                };
+                foreach (var item in lstTiposContas)
+                {
+                    //ListaTiposContas.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void CarregarContasConsolidadas()
+        {
+            try
+            {
+                lstTAplicacaoConsolidada = new List<AplicacaoConsolidadaInputModel>()
+                {
+                    new AplicacaoConsolidadaInputModel("15fdda04-7326-4f91-8cac-928708920710", "f1c67966-44f5-42a4-9234-f98de19ee091", "Conta Corrente", 1, 307046.97M, 307046.97M), /*3746.97M*/
+                    new AplicacaoConsolidadaInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "f1c67966-44f5-42a4-9234-f98de19ee091", "Conta Poupança", 2, 7128708.59M, 7128708.59M), /*7108.59M*/
+                    new AplicacaoConsolidadaInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "f0062c82-a2b4-4d1f-8def-a9bd2546d322", "Conta Corrente", 1, 7128708.59M, 7128708.59M), /*7108.59M*/
+                    new AplicacaoConsolidadaInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "8ba15d50-c8c3-4381-bbe2-e34bdbe03113", "Conta Corrente", 1, 7128708.59M, 7128708.59M), /*7108.59M*/
+                    new AplicacaoConsolidadaInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "7889eb71-e59c-422a-8ae6-698e1a678203", "Conta Corrente", 1, 7128708.59M, 7128708.59M), /*7108.59M*/
+                    new AplicacaoConsolidadaInputModel("d36da50d-9ee4-41f2-89d8-5cb7d146e343", "85c40d81-e63f-46a4-bade-c5bcdf130789", "Conta Corrente", 1, 7128708.59M, 7128708.59M), /*7108.59M*/
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        public class IrParaTipoContaCommand : BaseCommand
+        {
+            public override void Execute(object parameter)
+            {
+                var itemSelecionado = (ContaInputModel)parameter;
+                var itens = lstTiposContas.FindAll(x => x.IdContas == itemSelecionado.ID);
+
+                App.PrincipalViewModel.ListaTiposContas.Clear();
+
+                foreach (var item in itens)
+                    App.PrincipalViewModel.ListaTiposContas.Add(item);
+            }
+        }
+        public class IrParaAplicacoesCommand : BaseCommand
+        {
+            public override void Execute(object parameter)
+            {
+                var itemSelecionado = (TiposContasInputModel) parameter;
+                //var itens = lstTiposContas.FindAll(x => x.IdContas == itemSelecionado.ID);
+
+                //App.PrincipalViewModel.ListaTiposContas.Clear();
+
+                //foreach (var item in itens)
+                //    App.PrincipalViewModel.ListaTiposContas.Add(item);
+            }
+        }
+    }
+}
