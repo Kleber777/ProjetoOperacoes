@@ -12,7 +12,6 @@ namespace ProjetoOperacoes
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
             MainWindow app = new MainWindow();
             ApplicationPagesViewModel context = new ApplicationPagesViewModel();
             app.DataContext = context;
