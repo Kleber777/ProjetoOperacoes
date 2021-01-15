@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoOperacoes.Models
 {
@@ -9,8 +10,18 @@ namespace ProjetoOperacoes.Models
         {
 
         }
+
+        public AccountModel(string id, string bankName, string hexColor, string iconPath, double amount)
+        {
+            Id = Guid.NewGuid().ToString();
+            BankName = bankName;
+            HexColor = hexColor;
+            IconPath = iconPath;
+            Amount = amount;
+        }
+
         [Column ("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Column("bankname")]
         public string BankName { get; set; }

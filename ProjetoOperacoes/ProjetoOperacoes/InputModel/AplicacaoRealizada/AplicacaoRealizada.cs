@@ -2,7 +2,7 @@
 {
     public class AplicacaoRealizada
     {
-        public AplicacaoRealizada(string iD, string idTiposContas, string descricao, int parcelas, decimal valorIndividual, decimal valorTotal)
+        public AplicacaoRealizada(string iD, string idTiposContas, string descricao, int parcelas, double valorIndividual, double valorTotal)
         {
             ID = iD;
             IdTiposContas = idTiposContas;
@@ -16,8 +16,8 @@
         public string IdTiposContas { get; set; }
         public string Descricao { get; set; }
         public int Parcelas { get; set; }
-        public decimal ValorIndividual { get; set; }
-        public decimal ValorTotal { get; set; }
+        public double ValorIndividual { get; set; }
+        public double ValorTotal { get; set; }
 
     }
 }

@@ -10,6 +10,8 @@ namespace ProjetoOperacoes.EntityFramework
         }
 
         public DbSet<AccountModel> AccountsDbSet { get; set; }
+        public DbSet<AccountTypeModel> AccountsTypeDbSet { get; set; }
+        public DbSet<ConsolidatedApplicationModel> ConsolidateApplicationDbSet { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {

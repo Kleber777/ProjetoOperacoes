@@ -118,7 +118,11 @@
     <Compile Include="Models\FutureApplicationModel.cs" />
     <Compile Include="Models\AccountTypeModel.cs" />
     <Compile Include="Models\ProgressApplicationModel.cs" />
+    <Compile Include="Repositories\ConsolidatedApplicationModelRepository.cs" />
+    <Compile Include="Repositories\AccountTypeModelRepository.cs" />
+    <Compile Include="Repositories\AccountModelRepository.cs" />
     <Compile Include="ResponsiveApplicationConverter.cs" />
+    <Compile Include="Services.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\NavigationPage\ApplicationPagesViewModel.cs" />

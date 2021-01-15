@@ -2,19 +2,23 @@
 {
     public class ContaInputModel
     {
-        public ContaInputModel(string iD, string nomeBanco, string corHexadecimal, string icone, decimal valorTotal)
+        public ContaInputModel()
+        {
+
+        }
+        public ContaInputModel(string iD, string nomeBanco, string corHexadouble, string icone, double valorTotal)
         {
             ID = iD;
             NomeBanco = nomeBanco;
-            CorHexadecimal = corHexadecimal;
+            CorHexadouble = corHexadouble;
             Icone = icone;
             ValorTotal = valorTotal;
         }
 
         public string ID { get; set; }
         public string NomeBanco { get; set; }
-        public string CorHexadecimal { get; set; }
+        public string CorHexadouble { get; set; }
         public string Icone { get; set; }
-        public decimal ValorTotal { get; set; }
+        public double ValorTotal { get; set; }
     }
 }

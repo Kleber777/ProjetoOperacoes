@@ -15,15 +15,15 @@ namespace ProjetoOperacoes
                 return false;
             }
 
-            decimal firstOperand;
-            decimal secondOperand;
+            double firstOperand;
+            double secondOperand;
 
-            if (!decimal.TryParse(value.ToString(), out firstOperand))
+            if (!double.TryParse(value.ToString(), out firstOperand))
             {
                 throw new InvalidOperationException("The value could not be converted to an integer");
             }
 
-            if (!decimal.TryParse(parameter.ToString(), out secondOperand))
+            if (!double.TryParse(parameter.ToString(), out secondOperand))
             {
                 throw new InvalidOperationException("The parameter could not be converted to an integer");
             }

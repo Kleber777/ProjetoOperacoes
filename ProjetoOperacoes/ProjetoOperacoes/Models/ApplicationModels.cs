@@ -1,8 +1,14 @@
-﻿namespace ProjetoOperacoes.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProjetoOperacoes.Models
 {
-    public class ApplicationModels
+    public abstract class ApplicationModels
     {
-        public ApplicationModels(string id, string idAccountTypes, string description, bool hasInstallments, decimal individualValue, decimal totalValue)
+        protected ApplicationModels()
+        {
+
+        }
+        public ApplicationModels(string id, string idAccountTypes, string description, bool hasInstallments, double individualValue, double totalValue)
         {
             Id = id;
             IdAccountTypes = idAccountTypes;
@@ -12,12 +18,23 @@
             TotalValue = totalValue;
         }
 
+        [Column("id")]
         public string Id { get; set; }
+
+        [Column("idaccounttypes")]
         public string IdAccountTypes { get; set; }
+
+        [Column("description")]
         public string Description { get; set; }
+
+        [Column("hasinstallments")]
         public bool HasInstallments { get; set; }
-        public decimal IndividualValue { get; set; }
-        public decimal TotalValue { get; set; }
+
+        [Column("individualvalue")]
+        public double IndividualValue { get; set; }
+
+        [Column("totalvalue")]
+        public double TotalValue { get; set; }
 
     }
 }
