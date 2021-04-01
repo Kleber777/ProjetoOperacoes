@@ -1,4 +1,6 @@
-﻿using ProjetoOperacoes.Models;
+﻿using ProjetoOperacoes.Models.AccountTypeModels;
+using ProjetoOperacoes.Models.ApplicationsModels;
+using ProjetoOperacoes.Models.BankModels;
 using System.Data.Entity;
 
 namespace ProjetoOperacoes.EntityFramework
@@ -7,11 +9,11 @@ namespace ProjetoOperacoes.EntityFramework
     {
         public ApplicationDBContext() : base("CnDatabase")
         {
+            
         }
-
-        public DbSet<AccountModel> AccountsDbSet { get; set; }
+        public DbSet<BankModel> BanksDbSet { get; set; }
         public DbSet<AccountTypeModel> AccountsTypeDbSet { get; set; }
-        public DbSet<ConsolidatedApplicationModel> ConsolidateApplicationDbSet { get; set; }
+        public DbSet<ApplicationModel> ApplicationDbSet { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {

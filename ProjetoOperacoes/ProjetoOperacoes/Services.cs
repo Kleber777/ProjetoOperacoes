@@ -1,6 +1,7 @@
-﻿using ProjetoOperacoes.InputModel.AplicacaoConsolidadaInputModel;
-using ProjetoOperacoes.InputModel.ContaInputModel;
-using ProjetoOperacoes.InputModel.TiposContaInputModel;
+﻿using ProjetoOperacoes.InputModel.AccountInputModel;
+using ProjetoOperacoes.InputModel.AccountTypeInputModel;
+using ProjetoOperacoes.InputModel.ConsolidateApplicationInputModel;
+using ProjetoOperacoes.InputModel.FutureApplicationInputModel;
 using ProjetoOperacoes.Models;
 using ProjetoOperacoes.Repositories;
 using System;
@@ -10,77 +11,138 @@ namespace ProjetoOperacoes
 {
     public class Services
     {
-        private readonly AccountModelRepository accountRepository;
+        private readonly BankModelRepository accountRepository;
         private readonly AccountTypeModelRepository accountTypeRepository;
         private readonly ConsolidatedApplicationModelRepository consolidatedApplicationRepository;
+        private readonly FutureApplicationModelRepository futureApplicationRepository;
+        private readonly ProgressApplicationModelRepository progressApplicationRepository;
+        private readonly AccomplishedApplicationModelRepository accomplishedApplicationRepository;
 
         public Services()
         {
-            accountRepository = new AccountModelRepository();
+            accountRepository = new BankModelRepository();
             accountTypeRepository = new AccountTypeModelRepository();
             consolidatedApplicationRepository = new ConsolidatedApplicationModelRepository();
+            futureApplicationRepository = new FutureApplicationModelRepository();
+            progressApplicationRepository = new ProgressApplicationModelRepository();
+            accomplishedApplicationRepository = new AccomplishedApplicationModelRepository();
         }
 
         //AccounRepository
-        public List<ContaInputModel> AccountsList()
+        public List<AccountInputModel> AccountsList()
         {
-            List<ContaInputModel> lstContasInputModel = new List<ContaInputModel>();
-            List<AccountModel> lstContas = new List<AccountModel>();
+            List<AccountInputModel> lstContasInputModel = new List<AccountInputModel>();
+            List<BankModel> lstContas = new List<BankModel>();
 
-            lstContas = accountRepository.AccountsList();
+            lstContas = accountRepository.BankList();
             foreach (var item in lstContas)
             {
-                lstContasInputModel.Add(new ContaInputModel(item.Id, item.BankName, item.HexColor, item.IconPath, item.Amount));
+                lstContasInputModel.Add(new AccountInputModel(item.Id, item.BankName, item.HexColor, item.IconPath, item.Amount));
             }
 
             return lstContasInputModel;
         }
-
-        public void InsertAccount(ContaInputModel obj)
+        public void InsertAccount(AccountInputModel obj)
         {
-            var accountModel = new AccountModel("", obj.NomeBanco, obj.CorHexadouble, obj.Icone, Convert.ToDouble(obj.ValorTotal));
+            var accountModel = new BankModel("", obj.BankName, obj.HexColor, obj.Icon, Convert.ToDouble(obj.Amount));
             accountRepository.InsertAccount(accountModel);
         }
 
         //AccountTypeRepository
-        public List<TiposContasInputModel> AccountsTypeListByIdAccount(string idAccount)
+        public List<AccountTypeInputModel> AccountsTypeListByIdAccount(string idAccount)
         {
-            List<TiposContasInputModel> lstAccountTypeInputModel = new List<TiposContasInputModel>();
+            List<AccountTypeInputModel> lstAccountTypeInputModel = new List<AccountTypeInputModel>();
             List<AccountTypeModel> lstAccountType = new List<AccountTypeModel>();
 
             lstAccountType = accountTypeRepository.AccountTypesList(idAccount);
             foreach (var item in lstAccountType)
             {
-                lstAccountTypeInputModel.Add(new TiposContasInputModel(item.Id,
+                lstAccountTypeInputModel.Add(new AccountTypeInputModel(item.Id,
                                                                        item.IdAccount,
                                                                        item.NameAccountType,
                                                                        item.AccountType,
                                                                        item.CountApplications,
-                                                                       null, null, null, null, item.TotalAccountValue));
+                                                                       null, 
+                                                                       null, 
+                                                                       null, 
+                                                                       null,
+                                                                       item.Balance));
             }
 
             return lstAccountTypeInputModel;
         }
 
         //ConsolidateApplicationRepositoy
-        public List<AplicacaoConsolidadaInputModel>  ConsolidateApplicationListByIdAccountType(string idAccountType)
+        public List<ConsolidateApplicationInputModel> ConsolidateApplicationListByIdAccountType(string idAccountType)
         {
 
-            List<AplicacaoConsolidadaInputModel> lstContasAplicacaoConsolidadaInputModel = new List<AplicacaoConsolidadaInputModel>();
+            List<ConsolidateApplicationInputModel> lstContasConsolidateApplicationInputModel = new List<ConsolidateApplicationInputModel>();
             List<ConsolidatedApplicationModel> lstContasAplicacaoConsolidada = new List<ConsolidatedApplicationModel>();
 
             lstContasAplicacaoConsolidada = consolidatedApplicationRepository.ConsolidateApplicationsList(idAccountType);
+
+
+
             foreach (var item in lstContasAplicacaoConsolidada)
             {
-                lstContasAplicacaoConsolidadaInputModel.Add(new AplicacaoConsolidadaInputModel(item.Id,
-                                                                                               item.IdAccountTypes,
-                                                                                               item.Description,
-                                                                                               0,
-                                                                                               item.IndividualValue,
-                                                                                               item.TotalValue));
+
+                double total;
+                if (item.HasInstallments == false)
+                    total = item.IndividualValue;
+                else
+                    total = item.IndividualValue * item.Installments - (item.PayInstallments == 0 ? +0 : item.IndividualValue * item.PayInstallments);
+
+
+                lstContasConsolidateApplicationInputModel.Add(new ConsolidateApplicationInputModel(item.Id,
+                                                                                                   item.IdAccountType,
+                                                                                                   item.Description,
+                                                                                                   item.HasInstallments,
+                                                                                                   item.PayInstallments,
+                                                                                                   item.Installments,
+                                                                                                   item.IndividualValue,
+                                                                                                   total));
             }
 
-            return lstContasAplicacaoConsolidadaInputModel;
+            return lstContasConsolidateApplicationInputModel;
         }
+
+        //FutureApplicationRepository
+        public List<FutureApplicationInputModel> FutureApplicationListByIdAccountType(string idAccountType)
+        {
+
+            List<FutureApplicationInputModel> lstContasFutureApplicationInputModel = new List<FutureApplicationInputModel>();
+            List<FutureApplicationModel> lstContasAplicacaoFutura = new List<FutureApplicationModel>();
+
+            lstContasAplicacaoFutura = futureApplicationRepository.FutureApplicationsList(idAccountType);
+
+
+
+            foreach (var item in lstContasAplicacaoFutura)
+            {
+
+                double total;
+                if (item.HasInstallments == false)
+                    total = item.IndividualValue;
+                else
+                    total = item.IndividualValue * item.Installments - (item.PayInstallments == 0 ? +0 : item.IndividualValue * item.PayInstallments);
+
+
+                lstContasFutureApplicationInputModel.Add(new FutureApplicationInputModel(item.Id,
+                                                                                         item.IdAccountType,
+                                                                                         item.Description,
+                                                                                         item.HasInstallments,
+                                                                                         item.PayInstallments,
+                                                                                         item.Installments,
+                                                                                         item.IndividualValue,
+                                                                                         total));
+            }
+
+            return lstContasFutureApplicationInputModel;
+        }
+        
+        //ProgressApplicationRepository
+
+        //AccomplishedApplicationRepository
+
     }
 }

@@ -122,11 +122,11 @@
         <!--TAMANHO DA BORDA DO BOTÃO-->
         <Style x:Key="BordaBotao" TargetType="Border">
             <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
-            <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+            <Setter Property="Background"  Value="{Binding HexColor}"/>
             <Setter Property="Height" Value="95"/>
             <Setter Property="Width" Value="95"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="{Binding CorHexadouble}"/>
+            <Setter Property="BorderBrush" Value="{Binding HexColor}"/>
 
             <Style.Triggers>
                 <!--VALOR PARA RESOLUÇÃO 1152X846-->
@@ -135,11 +135,11 @@
                                                Converter={StaticResource Teste},
                                                ConverterParameter=1024}"
                                                Value="True">
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="100"/>
                     <Setter Property="Width"  Value="100"/>
                     <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="BorderBrush" Value="{Binding CorHexadouble}"/>
+                    <Setter Property="BorderBrush" Value="{Binding HexColor}"/>
                 </DataTrigger>
 
                 <!--VALOR PARA RESOLUÇÃO 1280XTantosOutros-->
@@ -148,11 +148,11 @@
                                                Converter={StaticResource Teste},
                                                ConverterParameter=1152}"
                                                Value="True">
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="120"/>
                     <Setter Property="Width"  Value="120"/>
                     <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="BorderBrush" Value="{Binding CorHexadouble}"/>
+                    <Setter Property="BorderBrush" Value="{Binding HexColor}"/>
                 </DataTrigger>
 
                 <!--VALOR PARA RESOLUÇÃO 1366X768-->
@@ -161,12 +161,12 @@
                                                Converter={StaticResource Teste},
                                                ConverterParameter=1280}"
                                                Value="True">
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="130"/>
                     <Setter Property="Width"  Value="131"/>
                     <Setter Property="BorderThickness" Value="2"/>
                     <Setter Property="CornerRadius" Value="7"/>
-                    <Setter Property="BorderBrush" Value="{Binding CorHexadouble}"/>
+                    <Setter Property="BorderBrush" Value="{Binding HexColor}"/>
                 </DataTrigger>
 
                 <!--VALOR PARA RESOLUÇÃO > 1366X768-->
@@ -175,11 +175,11 @@
                                                Converter={StaticResource Teste},
                                                ConverterParameter=1366}"
                                                Value="True">
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="140"/>
                     <Setter Property="Width"  Value="140"/>
                     <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="BorderBrush" Value="{Binding CorHexadouble}"/>
+                    <Setter Property="BorderBrush" Value="{Binding HexColor}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -190,7 +190,7 @@
 
             <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
 
-            <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+            <Setter Property="Background"  Value="{Binding HexColor}"/>
             <Setter Property="Height" Value="2"/>
 
             <Style.Triggers>
@@ -203,7 +203,7 @@
                                                ConverterParameter=1024}"
                                                Value="True">
 
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="2"/>
                 </DataTrigger>
 
@@ -224,7 +224,7 @@
                                                ConverterParameter=1280}"
                                                Value="True">
 
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="5"/>
                 </DataTrigger>
             </Style.Triggers>
@@ -236,7 +236,7 @@
 
             <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
 
-            <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+            <Setter Property="Background"  Value="{Binding HexColor}"/>
             <Setter Property="Height" Value="60"/>
 
             <Style.Triggers>
@@ -249,7 +249,7 @@
                                                ConverterParameter=1024}"
                                                Value="True">
 
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="60"/>
                 </DataTrigger>
 
@@ -260,7 +260,7 @@
                                                Converter={StaticResource Teste},
                                                ConverterParameter=1152}"
                                                Value="True">
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="70"/>
                 </DataTrigger>
 
@@ -271,7 +271,7 @@
                                                Converter={StaticResource Teste},
                                                ConverterParameter=1280}"
                                                Value="True">
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="70"/>
 
                 </DataTrigger>
@@ -283,7 +283,7 @@
                                                Converter={StaticResource Teste},
                                                ConverterParameter=1366}"
                                                Value="True">
-                    <Setter Property="Background"  Value="{Binding CorHexadouble}"/>
+                    <Setter Property="Background"  Value="{Binding HexColor}"/>
                     <Setter Property="Height" Value="80"/>
 
                 </DataTrigger>
@@ -296,8 +296,8 @@
 
             <!--VALOR PADRÃO PARA RESOLUÇÃO 1024X768-->
 
-            <Setter Property="Source"  Value="{Binding Icone}"/>
-            <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+            <Setter Property="Source"  Value="{Binding Icon}"/>
+            <Setter Property="Height" Value="{Binding AlturaIcon}"/>
             <Setter Property="Width" Value="100"/>
 
             <Style.Triggers>
@@ -310,8 +310,8 @@
                                                ConverterParameter=1024}"
                                                Value="True">
 
-                    <Setter Property="Source"  Value="{Binding Icone}"/>
-                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Source"  Value="{Binding Icon}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcon}"/>
                     <Setter Property="Width" Value="100"/>
                 </DataTrigger>
 
@@ -323,8 +323,8 @@
                                                ConverterParameter=1152}"
                                                Value="True">
 
-                    <Setter Property="Source"  Value="{Binding Icone}"/>
-                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Source"  Value="{Binding Icon}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcon}"/>
                     <Setter Property="Width" Value="125"/>
                 </DataTrigger>
 
@@ -337,8 +337,8 @@
                                                ConverterParameter=1280}"
                                                Value="True">
 
-                    <Setter Property="Source"  Value="{Binding Icone}"/>
-                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Source"  Value="{Binding Icon}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcon}"/>
                     <Setter Property="Width" Value="125"/>
 
                 </DataTrigger>
@@ -351,8 +351,8 @@
                                                ConverterParameter=1366}"
                                                Value="True">
 
-                    <Setter Property="Source"  Value="{Binding Icone}"/>
-                    <Setter Property="Height" Value="{Binding AlturaIcone}"/>
+                    <Setter Property="Source"  Value="{Binding Icon}"/>
+                    <Setter Property="Height" Value="{Binding AlturaIcon}"/>
                     <Setter Property="Width" Value="140"/>
 
                 </DataTrigger>
@@ -524,6 +524,7 @@
                 </Border>
             </StackPanel>
 
+            <!--ACCOUNTLIST-->
             <Grid Grid.Row="1" Grid.RowSpan="2" Background="#F1F0F7" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -541,8 +542,8 @@
                                                     <Image Style="{StaticResource ImagemButton}"/>
                                                 </Border>
                                                 <StackPanel Margin="0, 15, 0, 0">
-                                                    <!--<TextBlock Style="{StaticResource FontButton}" Text="{Binding ValorTotal}" />-->
-                                                    <TextBlock Style="{StaticResource FontButton}" Text="{Binding ValorTotal, StringFormat=N2, ConverterCulture=pt-br}" />
+                                                    <!--<TextBlock Style="{StaticResource FontButton}" Text="{Binding TotalValue}" />-->
+                                                    <TextBlock Style="{StaticResource FontButton}" Text="{Binding Amount, StringFormat=N2, ConverterCulture=pt-br}" />
                                                 </StackPanel>
                                             </StackPanel>
                                         </Border>
@@ -590,9 +591,9 @@
                         <DataTemplate>
                             <Button Command="{Binding ElementName=lstListaTiposContas,  Path=DataContext.IrParaAplicacoes}" CommandParameter="{Binding .}" HorizontalAlignment="Center" Width="750" HorizontalContentAlignment="Left">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Nome}"/>
+                                    <TextBlock Text="{Binding NameAccountType}"/>
                                     <TextBlock Text=" "/>
-                                    <TextBlock Text="{Binding ValorTotalConta}"/>
+                                    <TextBlock Text="{Binding Balance}"/>
                                 </StackPanel>
                             </Button>
                         </DataTemplate>
@@ -600,8 +601,23 @@
                 </ListView>
             </Grid>
 
+            <!--CONTENT BOTÕES-->
+            <Grid Grid.Row="1" Background="White" Margin="15, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Background="White" Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2">
+                    <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="{Binding NameAccountType}" Margin="0, 0, 10, 0"/>
+                    <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="{Binding Balance}" Margin="0, 0, 10, 0"/>
+                    <Button Foreground="Black" HorizontalAlignment="Center" Width="50" Command="{Binding EditarValorTipoConta}" CommandParameter="{Binding Balance}"/>
+                </StackPanel>
+                
+            </Grid>
+
             <!--CONTENT APLICAÇÕES CONSOLIDADAS-->
-            <Border Grid.Row="1" Margin="0, 10, 0, 0" BorderBrush="Gray" BorderThickness="1">
+            <Border Grid.Row="2" Margin="0, 10, 0, 0" BorderBrush="Gray" BorderThickness="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -630,7 +646,7 @@
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <TextBlock Text="DESCRIÇÃO" Width="400"/>
-                        <TextBlock Text="PARCELAS" Width="100"/>
+                        <TextBlock Text="Installments" Width="100"/>
                         <TextBlock Text="VALOR INDIVIDUAL" Width="100"/>
                         <TextBlock Text="VALOR TOTAL" Width="100" HorizontalAlignment="Right"  Margin="20, 0, 0, 0"/>
                     </StackPanel>
@@ -645,21 +661,21 @@
                                         <ColumnDefinition Width="100"/>
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Descricao}"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
-                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Installments}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding IndividualValue}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding TotalValue}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                     <TextBlock Grid.Row="3" Text="Total Aplicações Futuras Consolidadas"/>
-                    <TextBlock Grid.Row="3" Text="{Binding TotalComAplicacaoFuturaConsolidada}" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Row="3" Text="{Binding TotalComFutureApplicationConsolidada}" HorizontalAlignment="Right"/>
                 </Grid>
             </Border>
 
             <!--CONTENT APLICAÇÕES FUTURAS-->
-            <Border  Grid.Row="2" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
+            <Border  Grid.Row="3" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -670,11 +686,11 @@
                     <TextBlock Text="APLICAÇÕES FUTURAS"/>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <TextBlock Text="DESCRIÇÃO" Width="400"/>
-                        <TextBlock Text="PARCELAS" Width="100"/>
+                        <TextBlock Text="Installments" Width="100"/>
                         <TextBlock Text="VALOR INDIVIDUAL" Width="100"/>
                         <TextBlock Text="VALOR TOTAL" Width="100" HorizontalAlignment="Right"  Margin="20, 0, 0, 0"/>
                     </StackPanel>
-                    <ListView Grid.Row="2" x:Name="lstAplicacaoFutura" ItemsSource="{Binding ListaFutura}">
+                    <ListView Grid.Row="2" x:Name="lstFutureApplication" ItemsSource="{Binding ListaFutura}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -684,28 +700,28 @@
                                         <ColumnDefinition Width="100"/>
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Descricao}"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
-                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Installments}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding IndividualValue}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding TotalValue}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                     <TextBlock Grid.Row="3" Text="Total Aplicações Futura"/>
-                    <TextBlock Grid.Row="3" Text="{Binding TotalAplicacaoFutura}" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Row="3" Text="{Binding TotalComFutureApplication}" HorizontalAlignment="Right"/>
                 </Grid>
             </Border>
 
             <!--CONTENT APLICAÇÕES EM ANDAMENTO-->
-            <Border Grid.Row="3" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
+            <Border Grid.Row="4" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="APLICAÇÕES EM ANDAMENTO"/>
-                    <ListView Grid.Row="1" x:Name="lstAplicacaoRealizada" ItemsSource="{Binding ListaEmAndamento}">
+                    <ListView Grid.Row="1" x:Name="lstAccomplishedApplicationInputModel" ItemsSource="{Binding ListaEmAndamento}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -715,10 +731,10 @@
                                         <ColumnDefinition Width="100"/>
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Descricao}"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
-                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Installments}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding IndividualValue}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding TotalValue}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -727,14 +743,14 @@
             </Border>
 
             <!--CONTENT APLICAÇÕES REALIZADAS-->
-            <Border Grid.Row="4" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
+            <Border Grid.Row="5" Margin="0, 10, 0, 0" BorderThickness="2" BorderBrush="Black">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="APLICAÇÕES REALIZADAS"/>
-                    <ListView Grid.Row="1" x:Name="lstAplicacaoRealizadas" ItemsSource="{Binding ListaRealizada}">
+                    <ListView Grid.Row="1" x:Name="lstAccomplishedApplicationInputModels" ItemsSource="{Binding ListaRealizada}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -744,10 +760,10 @@
                                         <ColumnDefinition Width="100"/>
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Descricao}"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Parcelas}"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding ValorIndividual}"/>
-                                    <TextBlock Grid.Column="3" Text="{Binding ValorTotal}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Installments}"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding IndividualValue}"/>
+                                    <TextBlock Grid.Column="3" Text="{Binding TotalValue}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -756,7 +772,7 @@
             </Border>
 
             <!--CONTENT TOTAIS-->
-            <Border Grid.Row="5" Margin="0, 10, 0, 0" Width="900" BorderThickness="2" BorderBrush="Black">
+            <Border Grid.Row="6" Margin="0, 10, 0, 0" Width="900" BorderThickness="2" BorderBrush="Black">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -783,10 +799,10 @@
                             <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding TotalAtual, StringFormat=N2, ConverterCulture=pt-br}"/>
 
                             <TextBlock Grid.Row="1" Text="Total com aplicação futura consolidada"/>
-                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="{Binding TotalComAplicacaoFuturaConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
+                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="{Binding TotalComFutureApplicationConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
 
                             <TextBlock Grid.Row="2" Text="TOTAL COM APLICAÇÃO FUTURA"/>
-                            <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Text="{Binding TotalComAplicacaoFutura, StringFormat=N2, ConverterCulture=pt-br}"/>
+                            <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Text="{Binding TotalComFutureApplication, StringFormat=N2, ConverterCulture=pt-br}"/>
                         </Grid>
                     </StackPanel>
                     
@@ -807,40 +823,14 @@
                             <TextBlock Grid.Column="1" Text="{Binding FinalTotalAtual, StringFormat=N2, ConverterCulture=pt-br}"/>
 
                             <TextBlock Grid.Row="1" Text="Final com aplicação futura consolidada"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FinalTotalComAplicacaoFuturaConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FinalTotalComFutureApplicationConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
 
                             <TextBlock Grid.Row="2" Text="FINAL COM APLICAÇÃO FUTURA"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding FinalTotalComAplicacaoFutura, StringFormat=N2, ConverterCulture=pt-br}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding FinalTotalComFutureApplication, StringFormat=N2, ConverterCulture=pt-br}"/>
                         </Grid>
                     </StackPanel>
                 </Grid>
             </Border>
-
-            <!--CONTENT BOTÕES-->
-            <Grid Grid.Row="6" Background="White" Margin="15, 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Border CornerRadius="5" BorderThickness="1" Background="White" Height="80" Width="180" BorderBrush="#3B86FF">
-                    <Button Style="{StaticResource BotaoPainelCarrinho}" FontWeight="DemiBold"  Background="White" BorderBrush="Transparent" Foreground="White" FontSize="18">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="CANCELAR"/>
-                            <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="(F10)"/>
-                        </StackPanel>
-                    </Button>
-                </Border>
-
-                <Border Grid.Column="1" CornerRadius="5" BorderThickness="1" Background="#3B86FF" Height="80" Width="180" BorderBrush="#3B86FF">
-                    <Button  Command="{Binding GoTo2}" Style="{StaticResource BotaoPainelCarrinho}" FontWeight="DemiBold" Background="#3B86FF" BorderThickness="0" BorderBrush="Transparent" Foreground="White" FontSize="18">
-                        <StackPanel>
-                            <TextBlock Foreground="White"  HorizontalAlignment="Center" Text="PAGAR"/>
-                            <TextBlock Foreground="White"  HorizontalAlignment="Center" Text="(F9)"/>
-                        </StackPanel>
-                    </Button>
-                </Border>
-            </Grid>
 
         </Grid>
     </Grid>

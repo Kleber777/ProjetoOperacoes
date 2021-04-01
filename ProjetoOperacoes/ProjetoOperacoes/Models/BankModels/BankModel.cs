@@ -1,27 +1,23 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjetoOperacoes.Models
+namespace ProjetoOperacoes.Models.BankModels
 {
-    [Table("tb_account")]
-    public class AccountModel
+    [Table("tb_bank")]
+    public class BankModel : Identity
     {
-        public AccountModel()
+        public BankModel()
         {
 
         }
 
-        public AccountModel(string id, string bankName, string hexColor, string iconPath, double amount)
+        public BankModel(string bankName, string hexColor, string iconPath, double amount)
         {
-            Id = Guid.NewGuid().ToString();
             BankName = bankName;
             HexColor = hexColor;
             IconPath = iconPath;
             Amount = amount;
         }
-
-        [Column ("id")]
-        public string Id { get; set; }
+        
 
         [Column("bankname")]
         public string BankName { get; set; }

@@ -5,21 +5,21 @@ using System.Linq;
 
 namespace ProjetoOperacoes.Repositories
 {
-    public class ConsolidatedApplicationModelRepository
+    public class ProgressApplicationModelRepository
     {
-        public List<ConsolidatedApplicationModel> ConsolidateApplicationsList(string idAccountType)
+        public List<ProgressApplicationModel> ProgressApplicationsList(string idAccountType)
         {
-            List<ConsolidatedApplicationModel> lstConsolidatedApplication = new List<ConsolidatedApplicationModel>();
+            List<ProgressApplicationModel> lstProgressApplication = new List<ProgressApplicationModel>();
             List<ApplicationModel> lstApplication = new List<ApplicationModel>();
 
             using (var db = new ApplicationDBContext())
                 lstApplication = db.ApplicationDbSet.ToList().FindAll(act => act.IdAccountType == idAccountType);
 
             foreach (var item in lstApplication)
-                if (item.TypeApplication == ETypeApplication.CONSOLIDATED)
-                    lstConsolidatedApplication.Add(new ConsolidatedApplicationModel());
+                if (item.TypeApplication == ETypeApplication.PROGRESS)
+                    lstProgressApplication.Add(new ProgressApplicationModel());
 
-            return lstConsolidatedApplication;
+            return lstProgressApplication;
         }
 
     }

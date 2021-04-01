@@ -1,29 +1,29 @@
 ﻿using ProjetoOperacoes.EntityFramework;
-using ProjetoOperacoes.Models;
+using ProjetoOperacoes.Models.BankModels;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ProjetoOperacoes.Repositories
 {
-    public class AccountModelRepository
+    public class BankModelRepository
     {
-        public List<AccountModel> AccountsList()
+        public List<BankModel> BankList()
         {
-            List<AccountModel> lstContas = new List<AccountModel>();
+            List<BankModel> lstContas = new List<BankModel>();
 
             using (var db = new ApplicationDBContext())
-                lstContas = db.AccountsDbSet.ToList();
+                lstContas = db.BanksDbSet.ToList();
 
             return lstContas;
         }
 
-        public void InsertAccount(AccountModel obj)
+        public void InsertBank(BankModel obj)
         {
             try
             {
                 using (var db = new ApplicationDBContext())
                 {
-                    db.AccountsDbSet.Add(obj);
+                    db.BanksDbSet.Add(obj);
                     db.SaveChanges();
                 }
 

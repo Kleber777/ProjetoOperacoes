@@ -104,20 +104,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Comandos\EditarValorTipoContaCommand.cs" />
     <Compile Include="EntityFramework\ApplicationDBContext.cs" />
-    <Compile Include="InputModel\AplicacaoConsolidadaInputModel\AplicacaoConsolidadaInputModel.cs" />
-    <Compile Include="InputModel\AplicacaoEmAndamentoInputModel\AplicacaoEmAndamentoInputModel.cs" />
-    <Compile Include="InputModel\AplicacaoFutura\AplicacaoFutura.cs" />
-    <Compile Include="InputModel\AplicacaoRealizada\AplicacaoRealizada.cs" />
-    <Compile Include="InputModel\ContaInputModel\ContaInputModel.cs" />
-    <Compile Include="InputModel\TiposContaInputModel\TiposContasInputModel.cs" />
-    <Compile Include="Models\AccomplishedApplication.cs" />
-    <Compile Include="Models\AccountModel.cs" />
-    <Compile Include="Models\ApplicationModels.cs" />
-    <Compile Include="Models\ConsolidatedApplicationModel.cs" />
-    <Compile Include="Models\FutureApplicationModel.cs" />
-    <Compile Include="Models\AccountTypeModel.cs" />
-    <Compile Include="Models\ProgressApplicationModel.cs" />
+    <Compile Include="InputModel\ConsolidateApplicationInputModel\ConsolidateApplicationInputModel.cs" />
+    <Compile Include="InputModel\ProgressApplicationInputModel\ProgressApplicationInputModel.cs" />
+    <Compile Include="InputModel\FutureApplicationInputModel\FutureApplicationInputModel.cs" />
+    <Compile Include="InputModel\AccomplishedApplicationInputModel\AccomplishedApplicationInputModel.cs" />
+    <Compile Include="InputModel\AccountInputModel\AccountInputModel.cs" />
+    <Compile Include="InputModel\AccountTypeInputModel\AccountTypeInputModel.cs" />
+    <Compile Include="Models\ApplicationsModels\AccomplishedApplicationModel.cs" />
+    <Compile Include="Models\BankModels\BankModel.cs" />
+    <Compile Include="Models\ApplicationsModels\ApplicationModels.cs" />
+    <Compile Include="Models\ApplicationsModels\ConsolidatedApplicationModel.cs" />
+    <Compile Include="Models\ApplicationsModels\ETypeApplication.cs" />
+    <Compile Include="Models\AccountTypeModels\EAccountType.cs" />
+    <Compile Include="Models\ApplicationsModels\FutureApplicationModel.cs" />
+    <Compile Include="Models\AccountTypeModels\AccountTypeModel.cs" />
+    <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\ApplicationsModels\ProgressApplicationModel.cs" />
+    <Compile Include="Repositories\AccomplishedApplicationModelRepository.cs" />
+    <Compile Include="Repositories\ProgressApplicationModelRepository.cs" />
+    <Compile Include="Repositories\FutureApplicationModelRepository.cs" />
     <Compile Include="Repositories\ConsolidatedApplicationModelRepository.cs" />
     <Compile Include="Repositories\AccountTypeModelRepository.cs" />
     <Compile Include="Repositories\AccountModelRepository.cs" />

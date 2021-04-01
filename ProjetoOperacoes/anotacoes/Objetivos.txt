@@ -1,0 +1,72 @@
+No progressApplication eu vou incluir o id existente na tabela consolidação é o certo a se fazer (pois na hora de atualizar juntamente as duas aplicações esse seria o único campo que mostraria 
+a vinculação (a não ser que o classe progressApplication tivesse o id da consolidate, pois também iria precisar ter o id da future... assim como a accomplished, porém pensando aqui 
+a tabela progress não precisa necessariamente ter o idAccountType... assim como a tabela realizada não irá precisar, ou talvez precise visto que eu vou ter que dar o nome do banco em questão que 
+pagou por toda aquela aplicação... mas a progress é um ponto forte a se discutir...))
+
+E que irá acontecer na aplicação realizada quando eu quitar todas as dividas em progresso e que está vinculada a uma consolidada. Quantos registros eu deveria mostrar. Acredito que só um. Permanece 
+o do andamento que teria um registro detalhado e apagaria o outro da tabela consolidada simples assim...
+
+Respondendo essas perguntas muitas dúvidas serão esclarecidas (dúvidas de relacionamentos também são esclarecidas aqui junto das propriedades a + que há em cada tabela...)
+    O QUE É UMA APLICAÇÃO CONSOLIDADA E O QUE PODE SER FEITO DE INTERAÇÃO???
+
+    O QUE É UMA APLICAÇÃO FUTURA E O QUE PODE SER FEITO DE INTERAÇÃO???
+
+    O QUE É UMA APLICAÇÃO EM ANDAMENTO E O QUE PODE SER FEITO DE INTERAÇÃO???
+
+    O QUE É UMA APLICAÇÃO REALIZADA E O QUE PODE SER FEITO DE INTERAÇÃO???
+
+Contas futuras não tem parcelas, pois servem somente para ver o quanto sobraria no futuro caso você decidisse comprar algo fora do orçamento presente.
+Contas realizadas é uma boa ter né é tipo um extrato... e vai ter todos os detalhes se tinha ou parcela ou não e o valor individual
+Como eu vou fazer para pegar a quantidade de aplicações que um tipo de conta vai ter?! 
+Como vai ficar as parcelas da aplicações em andamento que estão consolidadas?! 
+
+Relações Consolidada --> Realizadas
+Relações Em andamento --> Realizadas, futuras caso seja necessário mexer 
+Relações Futuras --> Consolidada, Andamento - Realizadas. E o que que diria que a aplicação não mudou de aplicação. Tem aplicações futuras que podem estar em andamento porém não estão consolidadas. 
+
+Como que ficaria no realizada uma aplicação que estava como futura e simplesmente mudou para consolidada?! Pronto nas aplicações realizadas eu mostro um extrato detalhado do comportamento de 
+todas as realizações. Isso mesmo assim fica muito loko. 
+
+Eu não consigo alterar uma aplicação consolidada que está em andamento na aba consolidada somente na aba em andamento. E irá ter um botão pagar parcelas. Que irá diminuir de um lado e aumentar 
+do outro. Se for o caso de eu mudar eu tenho que mudar somente a quantidade de parcelas total e não paga é isso mesmo. Ou eu posso alterar nos dois mesmo e vai cavalo.
+
+Definir o que irá ser mostrado em cada aplicação... ()
+Trocar o nome das listas da PrincipalViewModel para inglês...();
+Services devolver um observable collection, vale a pena?! 
+Criar os dados das aplicações em progresso e pensar como irá ser a aplicação realizada...
+
+A PARTIR DAQUI É NOVO 
+
+    OBJETIVOS
+        Trocar o nome tb_account para tb_bank
+
+    CRIAÇÃO DO BANCO -- Interesante aqui usar o pattern Chain of responsibility 
+    Talvez eu não precise que o usuário crie o banco o que seria até melhor se eles viessem prédefinidos.
+        só sera possível selecionar os bancos já cadastrados.
+        Quando clicar no banco criar somente os tipos de contas, no editar banco poder adicionar + outro tipo de conta. 
+
+Deletar por cascata. 
+
+    EDIÇÃO DO BANCO 
+        Podendo futuramente adicionar ou remover um novo tipo de conta. Nome do banco, cor e ícone. 
+        Em uma próxima versão poder fazer tudo por aqui. 
+
+    EDIÇÃO DE UM TIPO DE CONTA
+        Alterar somente o valor. Quando alterar aqui alterar o total do banco também
+
+    CRIAÇÃO DE UMA APLICAÇÃO -- interessante aqui usar o design pattern constructor
+        Devo ter uma seção aplicação onde terá 2 botões 1 nova aplicação e outro informação a respeito das aplicações.
+        Ter uma seção 
+        Quanto o count de qualquer aplicação for igual a zero não mostrar a seção aplicação.
+        Não posso criar uma aplicação em andamento. Ela é criada automaticamente pelo sistema quando o HasInstallments é igual a true. 
+        Nem tampouco posso criar um aplicação realizada a não ser que tenha um item existente nas outras duas aplicações (futuras ou consolidadas). 
+        aplicações consolidades que tem a propriedade HasInstallments = true. Deve ter uma cor de fundo diferente. 
+        aplicação consolidade mostra sempre o valor cheio. 
+        aplicação em andamento deve mostrar quantas parcelas foram pagas, quantas faltam e a diferença entre isso.
+        aplicação futura na v1 não tem parcelamento. 
+        aplicação em andamento só posso editar o valor da parcela paga somente isso. As outras ações eu tenho que fazer pela Aplicação consolidada.
+
+
+
+Nos quadros das aplicações eu edito / removo/ crio o item da aplicação não a aplicação toda. 
+
