@@ -1,0 +1,13 @@
+Em herança a clase base pode receber a classe filha tranquilamente (seja por atribuição ou até mesmo parâmetro). Agora o contrário é possível somente através do que
+chamamos de cast. 
+
+Classes abstratas não podem ser mapeadas. (Entity Framework)
+
+Em herança, quando se tem lista sem tentar usar um foreach é como se a herança não existisse.
+
+Uma classe base não pode servir de Contexto para o entity framework.
+    PostgresException: 42703: column Extent1.Discriminator does not exist -- Dá este erro. 
+
+Entity Framework exige que as classes tenham uma propriedade ID por padrão. Tentei fazer isso por herança porém deu errado. Acreditto que seja por conta da classe base não ter uma annotation 
+de tabela. O que de acordo com outros testes também não é possivel. Então a propriedade ID tem que estar na classe que será representada pelo contexto 
+

@@ -3,13 +3,16 @@
 namespace ProjetoOperacoes.Models.AccountTypeModels
 {
     [Table("tb_accounttype")]
-    public class AccountTypeModel : Identity
+    public class AccountTypeModel
     {
 
         public AccountTypeModel()
         {
 
         }
+
+        [Column("id")]
+        public string ID { get; set; }
 
         [Column("idbank")]
         public string IdBank { get; set; }

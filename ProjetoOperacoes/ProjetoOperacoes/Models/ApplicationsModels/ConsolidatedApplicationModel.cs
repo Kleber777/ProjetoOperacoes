@@ -6,14 +6,13 @@
         {
 
         }
-        public ConsolidatedApplicationModel(string idApplicationType,
-                                            string idAccountType,
+        public ConsolidatedApplicationModel(string idAccountType,
                                             string description,
                                             bool hasInstallments,
                                             int paidInstallments,
                                             int installments,
                                             double individualValue,
-                                            ETypeApplication typeApplication) : base(idApplicationType, idAccountType, description, hasInstallments, paidInstallments, installments, individualValue, typeApplication)
+                                            ETypeApplication typeApplication) : base(idAccountType, description, hasInstallments, paidInstallments, installments, individualValue, typeApplication)
         {
 
         }

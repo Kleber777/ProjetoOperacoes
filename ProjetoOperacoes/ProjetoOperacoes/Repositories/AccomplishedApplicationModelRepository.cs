@@ -10,14 +10,15 @@ namespace ProjetoOperacoes.Repositories
         public List<AccomplishedApplicationModel> AccomplishedApplicationsList(string idAccountType)
         {
             List<AccomplishedApplicationModel> lstAccomplishedApplication = new List<AccomplishedApplicationModel>();
-            List<ApplicationModel> lstApplication = new List<ApplicationModel>();
+            List<TbApplication> lstApplication = new List<TbApplication>();
 
             using (var db = new ApplicationDBContext())
                 lstApplication = db.ApplicationDbSet.ToList().FindAll(act => act.IdAccountType == idAccountType);
 
             foreach (var item in lstApplication)
                 if (item.TypeApplication == ETypeApplication.ACCOMPLISHED)
-                    lstAccomplishedApplication.Add(new AccomplishedApplicationModel());
+                    lstAccomplishedApplication.Add(new AccomplishedApplicationModel(item.IdAccountType, item.Description
+                        , item.HasInstallments, item.PaidInstallments, item.Installments, item.IndividualValue, item.TypeApplication));
             
             return lstAccomplishedApplication;
         }

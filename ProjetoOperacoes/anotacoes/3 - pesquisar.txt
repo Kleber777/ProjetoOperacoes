@@ -1,0 +1,3 @@
+Se um campo não é mapeado não faz sentido ele ficar salvo no banco ou faz?! 
+
+Como converter enum (por padrão é int) para string?! 

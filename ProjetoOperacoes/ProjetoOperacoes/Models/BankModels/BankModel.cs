@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoOperacoes.Models.BankModels
 {
     [Table("tb_bank")]
-    public class BankModel : Identity
+    public class BankModel
     {
         public BankModel()
         {
@@ -12,12 +13,16 @@ namespace ProjetoOperacoes.Models.BankModels
 
         public BankModel(string bankName, string hexColor, string iconPath, double amount)
         {
+            ID = Guid.NewGuid().ToString();
             BankName = bankName;
             HexColor = hexColor;
             IconPath = iconPath;
             Amount = amount;
         }
         
+
+        [Column("id")]
+        public string ID { get; set; }
 
         [Column("bankname")]
         public string BankName { get; set; }
@@ -28,7 +33,7 @@ namespace ProjetoOperacoes.Models.BankModels
         [Column("iconpath")]
         public string IconPath { get; set; }
 
-        [Column("amount")]
+        [NotMapped]
         public double Amount { get; set; }
     }
 }

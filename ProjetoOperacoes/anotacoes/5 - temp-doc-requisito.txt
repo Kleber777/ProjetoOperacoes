@@ -1,0 +1,24 @@
+1 - O repeatedid na tabela tb_application poderá se repetir 3 vezes (essa validação fica com a aplicação), sendo que cada item terá que ter um valor para o campo 
+typeapplication diferente. 
+
+2 - Uma despesa consolidada ou futura que estiver em progresso deverá ter uma cor de fundo diferente para indicar que se trata do mesma despesa que se tem na aplicação 
+em progresso. 
+
+3 - Em uma versão a conta realizada deverá contar com um recurso de mostrar detalhadamente todo o processo das despesas. 
+
+4 - Na v1 as parcelas em progresso só poderão ser alteradas na aplicação em progresso não podendo ser alterado na aplicação consolidada.
+
+5 - Os bancos já devem vir devidamente cadastrados em uma tela wizard porém nada impede de depois o cara poder cadastrar um pouco que não existe ou escolher os 
+já existentes. 
+
+6 - Quando um usuário estiver logado, se o banco que ele selecionou ele não criou uma conta, ao clicar no banco deverá ser solicitado uma tela para ele criar conta. 
+
+7 - No editar banco o cara poderá somente adicionar uma nova conta. 
+
+8 - Caso ele tenha criado já pelo menos uma conta, deverá mostrar a conta que ele tem. 
+
+9 - Ao clicar na conta deverá ser mostrado as aplicações. 
+
+10 - Ao editar uma conta na seção conta só é possível editar o valor da conta. 
+
+11 - 

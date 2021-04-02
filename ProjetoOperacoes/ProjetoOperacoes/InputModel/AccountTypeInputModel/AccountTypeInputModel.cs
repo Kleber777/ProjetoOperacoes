@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ProjetoOperacoes.Models.AccountTypeModels;
+using System.Collections.Generic;
 
 namespace ProjetoOperacoes.InputModel.AccountTypeInputModel
 {
@@ -11,8 +12,7 @@ namespace ProjetoOperacoes.InputModel.AccountTypeInputModel
         public AccountTypeInputModel(string id, 
                                      string idAccount, 
                                      string nameAccountType, 
-                                     int accountType,
-                                     int countApplications,
+                                     EAccountType accountType,
                                      List<ConsolidateApplicationInputModel.ConsolidateApplicationInputModel> consolidatedItems,
                                      List<FutureApplicationInputModel.FutureApplicationInputModel> futureItems,
                                      List<ProgressApplicationInputModel.ProgressApplication> progressItems,
@@ -23,7 +23,6 @@ namespace ProjetoOperacoes.InputModel.AccountTypeInputModel
             IdAccount = idAccount;
             NameAccountType = nameAccountType;
             AccountType = accountType;
-            CountApplications = countApplications;
             ConsolidatedItems = consolidatedItems;
             FutureItems = futureItems;
             ProgressItems = progressItems;
@@ -34,8 +33,7 @@ namespace ProjetoOperacoes.InputModel.AccountTypeInputModel
         public string ID { get; set; }
         public string IdAccount { get; set; }
         public string NameAccountType { get; set; }
-        public int AccountType { get; set; }
-        public int CountApplications { get; set; }
+        public EAccountType AccountType { get; set; }
         public List<ConsolidateApplicationInputModel.ConsolidateApplicationInputModel> ConsolidatedItems { get; set; }
         public List<FutureApplicationInputModel.FutureApplicationInputModel> FutureItems { get; set; }
         public List<ProgressApplicationInputModel.ProgressApplication> ProgressItems { get; set; }

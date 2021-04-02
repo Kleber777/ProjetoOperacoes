@@ -1,0 +1,31 @@
+1 - Fazer resumo do design pattern constructor -- pois vou começar a criar / editar / remover os diferentes tipos de apliação do banco.
+Será se as models subclasses serão mesmo necessárias?! ()
+Adicionar uma lista ao invés de somente um item para as aplicações / despesas. Usando entity framework. 
+Atualizar os documentos de requisitos. 
+Definir sprint. 
+
+Devo ter uma seção aplicação onde terá 2 botões 1 nova aplicação e outro informação a respeito das aplicações. ()
+Quanto o count de qualquer aplicação for igual a zero não mostrar a seção aplicação.
+Não posso criar uma aplicação em andamento. Ela é criada automaticamente pelo sistema quando o HasInstallments é igual a true. 
+Nem tampouco posso criar um aplicação realizada a não ser que tenha um item existente nas outras duas aplicações (futuras ou consolidadas). 
+aplicações consolidades que tem a propriedade HasInstallments = true. Deve ter uma cor de fundo diferente. 
+aplicação consolidade mostra sempre o valor cheio. 
+aplicação em andamento deve mostrar quantas parcelas foram pagas, quantas faltam e a diferença entre isso.
+aplicação em andamento só posso editar o valor da parcela paga somente isso. As outras ações eu tenho que fazer pela Aplicação consolidada.
+
+
+
+Como que ficaria no realizada uma aplicação que estava como futura e simplesmente mudou para consolidada?!  ()
+    Pronto nas aplicações realizadas eu mostro um extrato detalhado do comportamento de todas as realizações. Isso mesmo assim fica muito loko. 
+
+Trocar o nome das listas da PrincipalViewModel para inglês...();
+Services devolver um observable collection, vale a pena?! ()
+
+Chain of responsibility -- na hora de excluir os dados por cascata.
+
+Constructor -- na hora de criar os diferentes tipos de aplicações. 
+        
+        
+Nos quadros das aplicações eu edito / removo/ crio o item da aplicação não a aplicação toda. 
+
+Amount do bankmodel não pode ser salvo no banco, sendo necessário somente contabiliza-lo em execução. ()

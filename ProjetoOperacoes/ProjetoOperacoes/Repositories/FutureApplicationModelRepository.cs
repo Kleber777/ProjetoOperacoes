@@ -10,14 +10,15 @@ namespace ProjetoOperacoes.Repositories
         public List<FutureApplicationModel> FutureApplicationsList(string idAccountType)
         {
             List<FutureApplicationModel> lstFutureApplication = new List<FutureApplicationModel>();
-            List<ApplicationModel> lstApplication = new List<ApplicationModel>();
+            List<TbApplication> lstApplication = new List<TbApplication>();
 
             using (var db = new ApplicationDBContext())
                 lstApplication = db.ApplicationDbSet.ToList().FindAll(act => act.IdAccountType == idAccountType);
 
             foreach (var item in lstApplication)
                 if (item.TypeApplication == ETypeApplication.FUTURE)
-                    lstFutureApplication.Add(new FutureApplicationModel());
+                    lstFutureApplication.Add(new FutureApplicationModel(item.IdAccountType, item.Description
+                        , item.HasInstallments, item.PaidInstallments, item.Installments, item.IndividualValue, item.TypeApplication));
 
             return lstFutureApplication;
         }

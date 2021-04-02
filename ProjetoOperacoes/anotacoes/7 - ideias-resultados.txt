@@ -1,0 +1,11 @@
+Parece que a idéia do Identity de ter um ID onde todas as models herdariam dele não deu muito certo! 
+
+Pelo o que eu entendi a classe pai não pode ser mapeada. 
+    Devido a esse erro tenho 3 opções. 
+        1 - Criar as models herdando da classe pai. 
+            Com isso eu não precisaria reescrever as propriedades porém no banco teria o total de praticamente 4 tabelas iguais. 
+        2 - Manter a classe pai sem permitir que ela seja herdade a ninguém. 
+            Com isso eu mantenho somente uma tabela no banco porém deveria reescrever as propriedades nas outras 4 models. 
+        3 - Eu posso criar uma classe somente para representar a tabela que herde da classe pai.
+            Assim todas as outras classes não teriam que reescrever as propriedades e eu só teria uma tabela no banco. Acredito que isso não seja uma boa prática. 
+            Usando o design pattern constructor eu saberia exatamente qual registro eu estaria incluindo no banco. Filtrarei por todas os meus tipos de aplicação através do campo typeapplication.

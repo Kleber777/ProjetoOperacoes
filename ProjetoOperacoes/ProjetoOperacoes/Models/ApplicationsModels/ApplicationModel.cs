@@ -1,28 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoOperacoes.Models.ApplicationsModels
 {
-    [Table("tb_application")]
-    public abstract class ApplicationModel : Identity
+    public abstract class ApplicationModel
     {
-        protected ApplicationModel()
+        public ApplicationModel()
         {
-            //if (HasInstallments == false)
-            //    TotalValue = IndividualValue;
-            //else
-            //    TotalValue = IndividualValue * Installments - (PayInstallments == 0 ? +0 : IndividualValue * PayInstallments);
+
         }
 
-        protected ApplicationModel(string idApplicationType,
-                                    string idAccountType,
-                                    string description,
-                                    bool hasInstallments,
-                                    int paidInstallments,
-                                    int installments,
-                                    double individualValue,
-                                    ETypeApplication typeApplication)
+        public ApplicationModel(string idAccountType,
+                                string description,
+                                bool hasInstallments,
+                                int paidInstallments,
+                                int installments,
+                                double individualValue,
+                                ETypeApplication typeApplication)
         {
-            IdApplicationType = idApplicationType;
+            ID = Guid.NewGuid().ToString();
             IdAccountType = idAccountType;
             Description = description;
             HasInstallments = hasInstallments;
@@ -32,9 +28,8 @@ namespace ProjetoOperacoes.Models.ApplicationsModels
             TypeApplication = typeApplication;
         }
 
-
-        [Column("idapplicationtype")]
-        public string IdApplicationType { get; set; }
+        [Column("id")]
+        public string ID { get; set; }
 
         [Column("idaccounttype")]
         public string IdAccountType { get; set; }

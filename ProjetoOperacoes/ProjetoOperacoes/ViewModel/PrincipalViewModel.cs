@@ -319,7 +319,7 @@ namespace ProjetoOperacoes.ViewModel
                 App.PrincipalViewModel.ListaTiposContas.Clear();
 
                 foreach (var item in itens)
-                    App.PrincipalViewModel.ListaTiposContas.Add(new AccountTypeInputModel(item.ID, item.IdAccount, item.NameAccountType, item.AccountType, item.CountApplications ,null, null, null, null, item.Balance));
+                    App.PrincipalViewModel.ListaTiposContas.Add(new AccountTypeInputModel(item.ID, item.IdAccount, item.NameAccountType, item.AccountType, null, null, null, null, item.Balance));
             }
         }
         public class InsertNewAccountCommand : BaseCommand

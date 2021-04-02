@@ -113,8 +113,9 @@
     <Compile Include="InputModel\AccountInputModel\AccountInputModel.cs" />
     <Compile Include="InputModel\AccountTypeInputModel\AccountTypeInputModel.cs" />
     <Compile Include="Models\ApplicationsModels\AccomplishedApplicationModel.cs" />
+    <Compile Include="Models\ApplicationsModels\TbApplication.cs" />
     <Compile Include="Models\BankModels\BankModel.cs" />
-    <Compile Include="Models\ApplicationsModels\ApplicationModels.cs" />
+    <Compile Include="Models\ApplicationsModels\ApplicationModel.cs" />
     <Compile Include="Models\ApplicationsModels\ConsolidatedApplicationModel.cs" />
     <Compile Include="Models\ApplicationsModels\ETypeApplication.cs" />
     <Compile Include="Models\AccountTypeModels\EAccountType.cs" />
@@ -127,7 +128,8 @@
     <Compile Include="Repositories\FutureApplicationModelRepository.cs" />
     <Compile Include="Repositories\ConsolidatedApplicationModelRepository.cs" />
     <Compile Include="Repositories\AccountTypeModelRepository.cs" />
-    <Compile Include="Repositories\AccountModelRepository.cs" />
+    <Compile Include="Repositories\BankModelRepository.cs" />
+    <Compile Include="Repositories\TbApplicationRepository.cs" />
     <Compile Include="ResponsiveApplicationConverter.cs" />
     <Compile Include="Services.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />

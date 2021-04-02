@@ -6,13 +6,13 @@ namespace ProjetoOperacoes.Models
     public class Identity 
     {
 
-        protected Identity()
+        public Identity()
         {
             ID = Guid.NewGuid().ToString();
         }
 
         [Column("id")]
 
-        protected string ID;
+        public string ID;
     }
 }
