@@ -3,6 +3,33 @@ Será se as models subclasses serão mesmo necessárias?! ()
 Adicionar uma lista ao invés de somente um item para as aplicações / despesas. Usando entity framework. 
 Atualizar os documentos de requisitos. 
 Definir sprint. 
+Passar somente (no máximo) em ApplicationModel os parâmetros idAccountType, description, installments e individualValue
+    nessa primeira versão o usuário não poderá criar uma parcela em progresso já com parcelas pagas (ele terá que editar depois)
+    no caso de não ser aplicações em progresso não informar o installments no parametro pois o valor padrão será definido que é 1. 
+    eu saberei se é uma despesa em progresso ou não através da tela assim como se é futura ou consolidada
+
+    VISTO QUE É O DIRECTOR QUE CRIA O ITEM QUE EU QUERO EU TENHO QUE ARRUMAR A MINHA CLASSE QUE IMPLEMENTA A INTERFACE 
+        BUILDER E DEFINIR MELHOR O QUE TEM QUE TER NO MEU IBuilder...
+
+o repeatedId pode ser um id que se repete para o registro principal ou eu posso passar ele em branco. Ele só deve aparecer 
+3 vezez no campo repeated id.
+
+e se as outras classes fazem sentido, talvez seja possível tirar a herança. 
+
+O repeatedId pode ser gerado pelo builder ou na hora de inserir no banco. 
+    inserindo pelo banco 
+        eu criaria primeiro a conta normal depois puxaria do banco e criaria a em progresso com o id da conta normal que eu puxei 
+        do banco 
+
+    inserindo pelo builder 
+        o chato é que tem uma sobrecarga na interface e no builder. 
+        e eu tenho que chamar o Guid.NewGuid() no Director. 
+
+    no builder eu deixaria armazenado em uma variável e passaria em uma sobrecarga sem parâmetros. 
+
+testar sem o repeatedId sem parâmetros
+
+Fazer somente uma chamada no banco e na viewmodel preencher uma lista e sair distribuindo somente de acordo com o enum. 
 
 Devo ter uma seção aplicação onde terá 2 botões 1 nova aplicação e outro informação a respeito das aplicações. ()
 Quanto o count de qualquer aplicação for igual a zero não mostrar a seção aplicação.

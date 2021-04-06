@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ProjetoOperacoes.Models.ApplicationsModels.Components;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoOperacoes.Models.ApplicationsModels
 {
-    public abstract class ApplicationModel
+    [Table("tb_application")]
+    public class ApplicationModel
     {
         public ApplicationModel()
         {
@@ -11,6 +13,7 @@ namespace ProjetoOperacoes.Models.ApplicationsModels
         }
 
         public ApplicationModel(string idAccountType,
+                                string repeatedId,
                                 string description,
                                 bool hasInstallments,
                                 int paidInstallments,
@@ -20,6 +23,7 @@ namespace ProjetoOperacoes.Models.ApplicationsModels
         {
             ID = Guid.NewGuid().ToString();
             IdAccountType = idAccountType;
+            RepeatedId = repeatedId;
             Description = description;
             HasInstallments = hasInstallments;
             PaidInstallments = paidInstallments;
@@ -33,6 +37,9 @@ namespace ProjetoOperacoes.Models.ApplicationsModels
 
         [Column("idaccounttype")]
         public string IdAccountType { get; set; }
+        
+        [Column("repeatedid")]
+        public string RepeatedId { get; set; }
 
         [Column("description")]
         public string Description { get; set; }

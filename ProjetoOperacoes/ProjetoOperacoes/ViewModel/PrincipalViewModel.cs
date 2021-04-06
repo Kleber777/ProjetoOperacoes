@@ -1,22 +1,19 @@
 ﻿using ProjetoOperacoes.Comandos;
-using ProjetoOperacoes.InputModel.AccomplishedApplicationInputModel;
-using ProjetoOperacoes.InputModel.AccountInputModel;
-using ProjetoOperacoes.InputModel.AccountTypeInputModel;
-using ProjetoOperacoes.InputModel.ConsolidateApplicationInputModel;
-using ProjetoOperacoes.InputModel.FutureApplicationInputModel;
-using ProjetoOperacoes.InputModel.ProgressApplicationInputModel;
+using ProjetoOperacoes.InputModels;
+using ProjetoOperacoes.InputModels.ApplicationInputModels;
+using ProjetoOperacoes.InputModels.ApplicationInputModels.Utils;
+using ProjetoOperacoes.Models.ApplicationsModels.Components;
 using ProjetoOperacoes.ViewModel.NavigationPage;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Input;
 
 namespace ProjetoOperacoes.ViewModel
 {
     public class PrincipalViewModel : BaseViewModel, IPageViewModel
     {
-        private static AccountInputModel SelectedAccount = new AccountInputModel { ID = "Teste",  BankName = "Teste Banco", HexColor = "#00FF07", Icon = "Não tem", Amount = 100000};
+        private static BankInputModel SelectedAccount = new BankInputModel { ID = "Teste",  BankName = "Teste Banco", HexColor = "#00FF07", Icon = "Não tem", Amount = 100000};
         private static Services ServicesPrincipalView;
 
         private static AccountTypeInputModel AccounTypeSelected;
@@ -35,12 +32,12 @@ namespace ProjetoOperacoes.ViewModel
         }
 
         #region Propriedades PrincipalViewModel
-        public ObservableCollection<AccountInputModel> ListaContas { get; set; }
+        public ObservableCollection<BankInputModel> ListaContas { get; set; }
         public ObservableCollection<AccountTypeInputModel> ListaTiposContas { get; set; }
-        public ObservableCollection<ConsolidateApplicationInputModel> ListaConsolidada { get; set; }
-        public ObservableCollection<FutureApplicationInputModel> ListaFutura { get; set; }
+        public ObservableCollection<ConsolidatedInputModel> ListaConsolidada { get; set; }
+        public ObservableCollection<FutureInputModel> ListaFutura { get; set; }
         public ObservableCollection<ProgressApplication> ListaEmAndamento { get; set; }
-        public ObservableCollection<AccomplishedApplicationInputModel> ListaRealizada { get; set; }
+        public ObservableCollection<AccomplishedInputModel> ListaRealizada { get; set; }
 
         private string _dadosConta;
         public string DadosConta
@@ -219,12 +216,12 @@ namespace ProjetoOperacoes.ViewModel
             EditarValorTipoConta = new EditarValorTipoContaCommand();
 
             //Instanciando Listas
-            ListaContas = new ObservableCollection<AccountInputModel>();
+            ListaContas = new ObservableCollection<BankInputModel>();
             ListaTiposContas = new ObservableCollection<AccountTypeInputModel>();
-            ListaConsolidada = new ObservableCollection<ConsolidateApplicationInputModel>();
-            ListaFutura = new ObservableCollection<FutureApplicationInputModel>();
+            ListaConsolidada = new ObservableCollection<ConsolidatedInputModel>();
+            ListaFutura = new ObservableCollection<FutureInputModel>();
             ListaEmAndamento = new ObservableCollection<ProgressApplication>();
-            ListaRealizada = new ObservableCollection<AccomplishedApplicationInputModel>();
+            ListaRealizada = new ObservableCollection<AccomplishedInputModel>();
 
             AccounTypeSelected = new AccountTypeInputModel();
 
@@ -236,10 +233,10 @@ namespace ProjetoOperacoes.ViewModel
         #region Métodos
         private void CarregarDados()
         {
-            var lstContas = ServicesPrincipalView.AccountsList();
+            var lstContas = ServicesPrincipalView.BankList();
 
             foreach (var item in lstContas)
-                ListaContas.Add(new AccountInputModel(item.ID, item.BankName, item.HexColor, item.Icon, item.Amount));
+                ListaContas.Add(new BankInputModel(item.ID, item.BankName, item.HexColor, item.Icon, item.Amount));
         }
         private void LimparObservableCollection()
         {
@@ -271,37 +268,13 @@ namespace ProjetoOperacoes.ViewModel
 
                 App.PrincipalViewModel.LimparObservableCollection();
 
+                var lstApplication = ServicesPrincipalView.ApplicationListByIdAccountType(tipoContaSelecionado.ID);
+
                 // ConsolidatedList
-                List<ConsolidateApplicationInputModel> itensConsolidados = ServicesPrincipalView.ConsolidateApplicationListByIdAccountType(tipoContaSelecionado.ID);
+                List<ApplicationInputModel> itensConsolidados = lstApplication.FindAll(c => c.ETypeApplication == ETypeApplication.CONSOLIDATED);
                 foreach (var item in itensConsolidados)
-                    App.PrincipalViewModel.ListaConsolidada.Add(item);
+                    App.PrincipalViewModel.ListaConsolidada.Add(new ConsolidatedInputModel());
 
-                App.PrincipalViewModel.TotalComFutureApplicationConsolidada = App.PrincipalViewModel.ListaConsolidada.Sum(c => c.TotalValue);
-                App.PrincipalViewModel.FinalTotalComFutureApplicationConsolidada = tipoContaSelecionado.Balance - App.PrincipalViewModel.TotalComFutureApplicationConsolidada;
-
-                //FutureList
-                List<FutureApplicationInputModel> itensFuturas = ServicesPrincipalView.FutureApplicationListByIdAccountType(tipoContaSelecionado.ID);
-                foreach (var item in itensFuturas)
-                    App.PrincipalViewModel.ListaFutura.Add(item);
-
-                App.PrincipalViewModel.TotalComFutureApplication = App.PrincipalViewModel.ListaFutura.Sum(c => c.TotalValue);
-                App.PrincipalViewModel.FinalTotalComFutureApplication = tipoContaSelecionado.Balance - App.PrincipalViewModel.TotalComFutureApplication;
-
-                // ProgressList
-                //List<ConsolidateApplicationInputModel> itensConsolidados = ServicesPrincipalView.ConsolidateApplicationListByIdAccountType(tipoContaSelecionado.ID);
-                //foreach (var item in itensConsolidados)
-                //    App.PrincipalViewModel.ListaConsolidada.Add(item);
-
-                //App.PrincipalViewModel.TotalComFutureApplicationConsolidada = App.PrincipalViewModel.ListaConsolidada.Sum(c => c.TotalValue);
-                //App.PrincipalViewModel.FinalTotalComFutureApplicationConsolidada = tipoContaSelecionado.Balance - App.PrincipalViewModel.TotalComFutureApplicationConsolidada;                
-
-                // AccomplishedList
-                //List<ConsolidateApplicationInputModel> itensConsolidados = ServicesPrincipalView.ConsolidateApplicationListByIdAccountType(tipoContaSelecionado.ID);
-                //foreach (var item in itensConsolidados)
-                //    App.PrincipalViewModel.ListaConsolidada.Add(item);
-
-                //App.PrincipalViewModel.TotalComFutureApplicationConsolidada = App.PrincipalViewModel.ListaConsolidada.Sum(c => c.TotalValue);
-                //App.PrincipalViewModel.FinalTotalComFutureApplicationConsolidada = tipoContaSelecionado.Balance - App.PrincipalViewModel.TotalComFutureApplicationConsolidada;                
 
             }
         }
@@ -309,7 +282,7 @@ namespace ProjetoOperacoes.ViewModel
         {
             public override void Execute(object parameter)
             {
-                SelectedAccount = (AccountInputModel)parameter;
+                SelectedAccount = (BankInputModel)parameter;
 
                 var itens = ServicesPrincipalView.AccountsTypeListByIdAccount(SelectedAccount.ID);
                 App.PrincipalViewModel.DadosConta = SelectedAccount.BankName + "   " + SelectedAccount.Amount.ToString("N2", CultureInfo.CurrentCulture);
@@ -319,15 +292,15 @@ namespace ProjetoOperacoes.ViewModel
                 App.PrincipalViewModel.ListaTiposContas.Clear();
 
                 foreach (var item in itens)
-                    App.PrincipalViewModel.ListaTiposContas.Add(new AccountTypeInputModel(item.ID, item.IdAccount, item.NameAccountType, item.AccountType, null, null, null, null, item.Balance));
+                    App.PrincipalViewModel.ListaTiposContas.Add(new AccountTypeInputModel(item.ID, item.IdBank, item.NameAccountType, item.AccountType,/* null, null, null, null,*/ item.Balance));
             }
         }
         public class InsertNewAccountCommand : BaseCommand
         {
             public override void Execute(object parameter)
             {
-                //var itemSelecionado = (AccountInputModel)parameter;
-                ServicesPrincipalView.InsertAccount(SelectedAccount);
+                //var itemSelecionado = (BankInputModel)parameter;
+                ServicesPrincipalView.InsertBank(SelectedAccount);
                 App.PrincipalViewModel.ListaContas.Clear();
                 App.PrincipalViewModel.CarregarDados();
             }

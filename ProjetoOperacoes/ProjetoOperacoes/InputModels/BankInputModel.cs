@@ -1,12 +1,12 @@
-﻿namespace ProjetoOperacoes.InputModel.AccountInputModel
+﻿namespace ProjetoOperacoes.InputModels
 {
-    public class AccountInputModel
+    public class BankInputModel
     {
-        public AccountInputModel()
+        public BankInputModel()
         {
 
         }
-        public AccountInputModel(string id, string bankName, string hexColor, string icon, double amount)
+        public BankInputModel(string id, string bankName, string hexColor, string icon, double amount)
         {
             ID = id;
             BankName = bankName;

@@ -11,3 +11,13 @@ Uma classe base não pode servir de Contexto para o entity framework.
 Entity Framework exige que as classes tenham uma propriedade ID por padrão. Tentei fazer isso por herança porém deu errado. Acreditto que seja por conta da classe base não ter uma annotation 
 de tabela. O que de acordo com outros testes também não é possivel. Então a propriedade ID tem que estar na classe que será representada pelo contexto 
 
+A classe que implementa a interface não pode deixar o método do "contrato" como sendo private. 
+
+Não faz sentido trabalhar com classe abstratra para ser a classe referência do builder. 
+    Tirar o abstract, mas por ela ser herdada por outras classes simplesmente acontece de não dar para trabalhar com entity 
+    framework.
+
+No padrão builder os components são classes / enums (associações do objeto principal).
+A interface builder pega todos os parametros necessários e transforma em métodos onde a classe implementadora irá definir 
+propriedade por propriedade. 
+E o director é como serão passados e quais métodos serão necessários ser chamados.

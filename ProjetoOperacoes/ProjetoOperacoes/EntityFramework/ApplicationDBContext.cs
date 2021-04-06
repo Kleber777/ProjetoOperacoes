@@ -13,7 +13,7 @@ namespace ProjetoOperacoes.EntityFramework
         }
         public DbSet<BankModel> BanksDbSet { get; set; }
         public DbSet<AccountTypeModel> AccountsTypeDbSet { get; set; }
-        public DbSet<TbApplication> ApplicationDbSet { get; set; }
+        public DbSet<ApplicationModel> ApplicationDbSet { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {

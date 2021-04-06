@@ -1,4 +1,4 @@
-﻿namespace ProjetoOperacoes.Models.ApplicationsModels
+﻿namespace ProjetoOperacoes.Models.ApplicationsModels.Components
 {
     public enum ETypeApplication
     {

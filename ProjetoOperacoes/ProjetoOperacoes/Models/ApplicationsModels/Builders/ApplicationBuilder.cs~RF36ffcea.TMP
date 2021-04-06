@@ -1,0 +1,23 @@
+﻿namespace ProjetoOperacoes.Models.ApplicationsModels.Builder
+{
+    public class ApplicationBuilder : IBuilder
+    {
+        private ETypeApplication ETypeApplication;
+        private ApplicationModel ApplicationModel;
+
+        public void CreateApplication(string idAccountType, string description, ETypeApplication eTypeApplication, double individualValue)
+        {
+            ETypeApplication = eTypeApplication;
+        }
+
+        public void CreateApplicationWithInstallments(string idAccountType, string description, int installments, double individualValue)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ApplicationModel GetApplication()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}

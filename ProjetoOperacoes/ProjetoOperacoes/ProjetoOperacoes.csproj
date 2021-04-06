@@ -106,30 +106,29 @@
     </ApplicationDefinition>
     <Compile Include="Comandos\EditarValorTipoContaCommand.cs" />
     <Compile Include="EntityFramework\ApplicationDBContext.cs" />
-    <Compile Include="InputModel\ConsolidateApplicationInputModel\ConsolidateApplicationInputModel.cs" />
-    <Compile Include="InputModel\ProgressApplicationInputModel\ProgressApplicationInputModel.cs" />
-    <Compile Include="InputModel\FutureApplicationInputModel\FutureApplicationInputModel.cs" />
-    <Compile Include="InputModel\AccomplishedApplicationInputModel\AccomplishedApplicationInputModel.cs" />
-    <Compile Include="InputModel\AccountInputModel\AccountInputModel.cs" />
-    <Compile Include="InputModel\AccountTypeInputModel\AccountTypeInputModel.cs" />
-    <Compile Include="Models\ApplicationsModels\AccomplishedApplicationModel.cs" />
-    <Compile Include="Models\ApplicationsModels\TbApplication.cs" />
+    <Compile Include="InputModels\ApplicationInputModels\ApplicationInputModel.cs" />
+    <Compile Include="InputModels\ApplicationInputModels\Utils\ConsolidatedInputModel.cs" />
+    <Compile Include="InputModels\ApplicationInputModels\Utils\ProgressInputModel.cs" />
+    <Compile Include="InputModels\ApplicationInputModels\Utils\FutureInputModel.cs" />
+    <Compile Include="InputModels\ApplicationInputModels\Utils\AccomplishedInputModel.cs" />
+    <Compile Include="InputModels\BankInputModel.cs" />
+    <Compile Include="InputModels\AccountTypeInputModel.cs" />
+    <Compile Include="Models\ApplicationsModels\Utils\AccomplishedApplication.cs" />
+    <Compile Include="Models\ApplicationsModels\Builders\ApplicationBuilder.cs" />
+    <Compile Include="Models\ApplicationsModels\Builders\IBuilder.cs" />
+    <Compile Include="Models\ApplicationsModels\Directors\Director.cs" />
     <Compile Include="Models\BankModels\BankModel.cs" />
     <Compile Include="Models\ApplicationsModels\ApplicationModel.cs" />
-    <Compile Include="Models\ApplicationsModels\ConsolidatedApplicationModel.cs" />
-    <Compile Include="Models\ApplicationsModels\ETypeApplication.cs" />
+    <Compile Include="Models\ApplicationsModels\Utils\ConsolidatedApplication.cs" />
+    <Compile Include="Models\ApplicationsModels\Components\ETypeApplication.cs" />
     <Compile Include="Models\AccountTypeModels\EAccountType.cs" />
-    <Compile Include="Models\ApplicationsModels\FutureApplicationModel.cs" />
+    <Compile Include="Models\ApplicationsModels\Utils\FutureApplication.cs" />
     <Compile Include="Models\AccountTypeModels\AccountTypeModel.cs" />
     <Compile Include="Models\Identity.cs" />
-    <Compile Include="Models\ApplicationsModels\ProgressApplicationModel.cs" />
-    <Compile Include="Repositories\AccomplishedApplicationModelRepository.cs" />
-    <Compile Include="Repositories\ProgressApplicationModelRepository.cs" />
-    <Compile Include="Repositories\FutureApplicationModelRepository.cs" />
-    <Compile Include="Repositories\ConsolidatedApplicationModelRepository.cs" />
+    <Compile Include="Models\ApplicationsModels\Utils\ProgressApplication.cs" />
     <Compile Include="Repositories\AccountTypeModelRepository.cs" />
     <Compile Include="Repositories\BankModelRepository.cs" />
-    <Compile Include="Repositories\TbApplicationRepository.cs" />
+    <Compile Include="Repositories\ApplicationRepository.cs" />
     <Compile Include="ResponsiveApplicationConverter.cs" />
     <Compile Include="Services.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
@@ -210,6 +209,7 @@
   <ItemGroup>
     <Resource Include="Images\PicPay.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

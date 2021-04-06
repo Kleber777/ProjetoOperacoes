@@ -1,8 +1,8 @@
-﻿namespace ProjetoOperacoes.InputModel.ProgressApplicationInputModel
+﻿namespace ProjetoOperacoes.InputModels.ApplicationInputModels.Utils
 {
-    public class ProgressApplication
+    public class AccomplishedInputModel
     {
-        public ProgressApplication(string id, string idAccountType, string description, bool hasInstallments, int payInstallments, int installments, double individualValue, double totalValue)
+        public AccomplishedInputModel(string id, string idAccountType, string description, bool hasInstallments, int payInstallments, int installments, double individualValue, double totalValue)
         {
             Id = id;
             IdAccountType = idAccountType;
@@ -22,7 +22,6 @@
         public int Installments { get; set; }
         public double IndividualValue { get; set; }
         public double TotalValue { get; private set; }
-
 
     }
 }

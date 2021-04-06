@@ -1,8 +1,8 @@
-﻿namespace ProjetoOperacoes.InputModel.ConsolidateApplicationInputModel
+﻿namespace ProjetoOperacoes.InputModels.ApplicationInputModels.Utils
 {
-    public class ConsolidateApplicationInputModel
+    public class FutureInputModel
     {
-        public ConsolidateApplicationInputModel(string id, string idAccountType, string description, bool hasInstallments, int payInstallments, int installments, double individualValue, double totalValue)
+        public FutureInputModel(string id, string idAccountType, string description, bool hasInstallments, int payInstallments, int installments, double individualValue, double totalValue)
         {
             Id = id;
             IdAccountType = idAccountType;

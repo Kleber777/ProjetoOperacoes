@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace ProjetoOperacoes.Repositories
 {
-    public class TbApplicationRepository
+    public class ApplicationRepository
     {
-        public List<TbApplication> TbApplicationsList(string idAccountType)
+        public List<ApplicationModel> ApplicationList(string idAccountType)
         {
-            List<TbApplication> lstApplication = new List<TbApplication>();
+            List<ApplicationModel> lstApplication = new List<ApplicationModel>();
 
             using (var db = new ApplicationDBContext())
                 lstApplication = db.ApplicationDbSet.ToList().FindAll(act => act.IdAccountType == idAccountType);
@@ -20,12 +20,11 @@ namespace ProjetoOperacoes.Repositories
         public void InsertApplication(ApplicationModel obj)
         {
 
-            var teste = (TbApplication)obj;
             try
             {
                 using (var db = new ApplicationDBContext())
                 {
-                    db.ApplicationDbSet.Add(teste);
+                    db.ApplicationDbSet.Add(obj);
                     db.SaveChanges();
                 }
 
@@ -36,7 +35,6 @@ namespace ProjetoOperacoes.Repositories
                 throw;
             }
         }
-
 
     }
 }
