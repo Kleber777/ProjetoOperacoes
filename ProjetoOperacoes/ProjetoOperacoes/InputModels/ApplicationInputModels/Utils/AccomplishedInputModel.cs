@@ -1,27 +1,12 @@
-﻿namespace ProjetoOperacoes.InputModels.ApplicationInputModels.Utils
+﻿using ProjetoOperacoes.Models.ApplicationsModels.Components;
+
+namespace ProjetoOperacoes.InputModels.ApplicationInputModels.Utils
 {
-    public class AccomplishedInputModel
+    public class AccomplishedInputModel : ApplicationInputModel
     {
-        public AccomplishedInputModel(string id, string idAccountType, string description, bool hasInstallments, int payInstallments, int installments, double individualValue, double totalValue)
+        public AccomplishedInputModel(string id, string idAccountType, string repeatedId, string description, bool hasInstallments, int paidInstallments, int installments, double individualValue, double totalValue, ETypeApplication typeApplication) : base(id, idAccountType, repeatedId, description, hasInstallments, paidInstallments, installments, individualValue, totalValue, typeApplication)
         {
-            Id = id;
-            IdAccountType = idAccountType;
-            Description = description;
-            HasInstallments = hasInstallments;
-            PayInstallments = payInstallments;
-            Installments = installments;
-            IndividualValue = individualValue;
-            TotalValue = totalValue;
+
         }
-
-        public string Id { get; set; }
-        public string IdAccountType { get; set; }
-        public string Description { get; set; }
-        public bool HasInstallments { get; set; }
-        public int PayInstallments { get; set; }
-        public int Installments { get; set; }
-        public double IndividualValue { get; set; }
-        public double TotalValue { get; private set; }
-
     }
 }

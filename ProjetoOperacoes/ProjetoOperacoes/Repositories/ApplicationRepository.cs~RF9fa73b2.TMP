@@ -7,6 +7,53 @@ namespace ProjetoOperacoes.Repositories
 {
     public class ApplicationRepository
     {
+        public List<ApplicationModel> ApplicationList(string idAccountType)
+        {
+            List<ApplicationModel> lstApplication = new List<ApplicationModel>();
+
+            using (var db = new ApplicationDBContext())
+                lstApplication = db.ApplicationDbSet.ToList().FindAll(act => act.IdAccountType == idAccountType);
+
+            return lstApplication;
+        }
+
+        public void InsertApplication(ApplicationModel obj)
+        {
+
+            try
+            {
+                using (var db = new ApplicationDBContext())
+                {
+                    db.ApplicationDbSet.Add(obj);
+                    db.SaveChanges();
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void EditApplication(ApplicationModel obj)
+        {
+            try
+            {
+                using (var db = new ApplicationDBContext())
+                {
+                    db.ApplicationDbSet.Add(obj);
+                    db.SaveChanges();
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+
+        }
         public ApplicationModel LoadById(string id)
         {
             try
@@ -17,69 +64,6 @@ namespace ProjetoOperacoes.Repositories
                     application = db.ApplicationDbSet.Find(id);
 
                 return application;
-
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-
-        }
-        public void CreateApplication(ApplicationModel obj)
-        {
-
-            try
-            {
-                using (var db = new ApplicationDBContext())
-                {
-                    db.ApplicationDbSet.Add(obj);
-                    db.SaveChanges();
-                }
-
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-        public List<ApplicationModel> ReadApplicationList(string idAccountType)
-        {
-            List<ApplicationModel> lstApplication = new List<ApplicationModel>();
-
-            using (var db = new ApplicationDBContext())
-                lstApplication = db.ApplicationDbSet.ToList().FindAll(act => act.IdAccountType == idAccountType);
-
-            return lstApplication;
-        }
-        public void UpdateApplication(ApplicationModel obj)
-        {
-            try
-            {
-                using (var db = new ApplicationDBContext())
-                {
-                    db.ApplicationDbSet.Add(obj);
-                    db.SaveChanges();
-                }
-
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-
-        }
-        public void DeleteApplication(ApplicationModel obj)
-        {
-            try
-            {
-                using (var db = new ApplicationDBContext())
-                {
-                    db.ApplicationDbSet.Remove(obj);
-                    db.SaveChanges();
-                }
 
             }
             catch (System.Exception)

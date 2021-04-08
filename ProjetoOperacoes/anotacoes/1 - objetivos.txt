@@ -1,3 +1,22 @@
+Ver uma maneira de como carregar os dados agora com os commands não estando na viewmodel. (X)
+Método CarregarDados da PrincipalViewModel está comentado. Ver isso com urgência. 
+Colocar nomes exatos dos commands na suas respectivas views. 
+Depois fazer teste para validação (caso passe algum objeto vazio / coisa do tipo) ()
+
+Passar os dados corretamente para cada inputmodel application. 
+Terminar Crud Application (falta Select, update, delete) (X) 
+Atualizar toda a vez a tela depois de fazer uma edição ou criação ou remoção. ()
+Terminar o Create Application passando o id do application type. (X)
+
+Pensar em criar um método em cada view para converter o que vem da tela e passar para o service.
+Não estou sendo muito fã dessa idéia de fazer calculos na camada de visualização.
+Fazer validação dos fluxo das telas. Como por exemplo com urgência o idaccounttype. 
+Arrumar o fluxo de comportamento das telas isso é muito importante. 
+
+
+Pensar se vale a pena passar um ApplicationInputModel no InsertApplication no Services... (Por enquanto deixar redundante)
+
+
 1 - Fazer resumo do design pattern constructor -- pois vou começar a criar / editar / remover os diferentes tipos de apliação do banco.
 Será se as models subclasses serão mesmo necessárias?! ()
 Adicionar uma lista ao invés de somente um item para as aplicações / despesas. Usando entity framework. 

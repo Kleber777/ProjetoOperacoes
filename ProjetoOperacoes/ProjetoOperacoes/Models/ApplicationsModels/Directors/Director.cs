@@ -47,7 +47,7 @@ namespace ProjetoOperacoes.Models.ApplicationsModels.Directors
             builder.SetIndividualValue(individualValue);
             builder.SetTypeApplication(ETypeApplication.PROGRESS);
             builder.SetRepeatedId();
-            builder.Reset();
+            builder.ResetRepeatedId();
         }
 
     }

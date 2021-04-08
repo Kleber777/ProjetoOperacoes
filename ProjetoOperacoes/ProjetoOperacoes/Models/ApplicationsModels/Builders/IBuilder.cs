@@ -23,5 +23,8 @@ namespace ProjetoOperacoes.Models.ApplicationsModels.Builders
         /// Chamado somente no director CreateApplicationWithInstallments
         /// </summary>
         void Reset();
+
+        void ResetRepeatedId();
+
     }
 }

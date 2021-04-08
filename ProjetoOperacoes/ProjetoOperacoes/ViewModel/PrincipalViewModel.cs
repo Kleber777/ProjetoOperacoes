@@ -1,24 +1,17 @@
-﻿using ProjetoOperacoes.Comandos;
+﻿using ProjetoOperacoes.Comandos.AccountTypeCommands;
+using ProjetoOperacoes.Comandos.ApplicationCommands;
+using ProjetoOperacoes.Comandos.BankCommands;
 using ProjetoOperacoes.InputModels;
 using ProjetoOperacoes.InputModels.ApplicationInputModels;
 using ProjetoOperacoes.InputModels.ApplicationInputModels.Utils;
-using ProjetoOperacoes.Models.ApplicationsModels.Components;
 using ProjetoOperacoes.ViewModel.NavigationPage;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Windows.Input;
 
 namespace ProjetoOperacoes.ViewModel
 {
     public class PrincipalViewModel : BaseViewModel, IPageViewModel
     {
-        private static BankInputModel SelectedAccount = new BankInputModel { ID = "Teste",  BankName = "Teste Banco", HexColor = "#00FF07", Icon = "Não tem", Amount = 100000};
-        private static Services ServicesPrincipalView;
-
-        private static AccountTypeInputModel AccounTypeSelected;
-
-        // Comando Para Mudar de Página
         private ICommand _goTo2;
         public ICommand GoTo2
         {
@@ -31,7 +24,51 @@ namespace ProjetoOperacoes.ViewModel
             }
         }
 
-        #region Propriedades PrincipalViewModel
+        #region 1 - Properties PrincipalViewModel
+        private BankInputModel _bankSelected;
+        public BankInputModel BankSelected
+        {
+            get
+            {
+                return _bankSelected;
+            }
+            set
+            {
+                _bankSelected = value;
+                OnPropertyChanged("BankSelected");
+            }
+
+        }
+
+        private AccountTypeInputModel _accountTypeSelected;
+        public AccountTypeInputModel AccountTypeSelected
+        {
+            get
+            {
+                return _accountTypeSelected;
+            }
+            set
+            {
+                _accountTypeSelected = value;
+                OnPropertyChanged("AccountTypeSelected");
+            }
+
+        }
+
+        private ApplicationInputModel _applicationSelected;
+        public ApplicationInputModel ApplicationSelected
+        {
+            get
+            {
+                return _applicationSelected;
+            }
+            set
+            {
+                _applicationSelected = value;
+                OnPropertyChanged("ApplicationSelected");
+            }
+
+        }
         public ObservableCollection<BankInputModel> ListaContas { get; set; }
         public ObservableCollection<AccountTypeInputModel> ListaTiposContas { get; set; }
         public ObservableCollection<ConsolidatedInputModel> ListaConsolidada { get; set; }
@@ -53,6 +90,7 @@ namespace ProjetoOperacoes.ViewModel
             }
 
         }
+
         private string _nameAccountType;
         public string NameAccountType
         {
@@ -192,30 +230,40 @@ namespace ProjetoOperacoes.ViewModel
             }
 
         }
-
-
         #endregion
 
-        #region Propriedades de classes de comandos
-        public IrParaTipoContaCommand IrParaTipoConta { get; set; }
-        public InsertNewAccountCommand InsertNewAccount { get; set; }
-        public IrParaAplicacoesCommand IrParaAplicacoes { get; set; }
-        public EditarValorTipoContaCommand EditarValorTipoConta { get; set; }
+        #region 2 - Commands Properties
+        //PrincipalViewModel - Commands Properties
+        public CaptureApplicationCommand CaptureApplication { get; set; }
+        public GoToNewApplicationCommand GoToNewApplication { get; set; }
+
+        //BankCommands Properties
+        public CreateBankCommand CreateBank { get; set; }
+        public ReadBankCommand ReadBank { get; set; }
+        public UpdateBankCommand UpdateBank { get; set; }
+        public DeleteBankCommand DeleteBank { get; set; }
+
+        //AccountTypeCommands Properties
+        public CreateAccountTypeCommand CreateAccountType { get; set; }
+        public ReadAccountTypeCommand ReadAccountType { get; set; }
+        public UpdateAccountTypeCommand UpdateAccountType { get; set; }
+        public DeleteAccountTypeCommand DeleteAccountType { get; set; }
+
+        //ApplicationCommands Properties
+        public CreateApplicationCommand CreateApplication { get; set; }
+        public ReadApplicationCommand ReadApplication { get; set; }
+        public UpdateApplicationCommand UpdateApplication { get; set; }
+        public DeleteApplicationCommand DeleteApplication { get; set; }
         #endregion
 
-        #region Construtores
+        #region 3 - Builders
         public PrincipalViewModel()
         {
-            //Instanciando Serviço da PrincipalViewModel
-            ServicesPrincipalView = new Services();
 
-            //Instanciando Commands
-            IrParaTipoConta = new IrParaTipoContaCommand();
-            InsertNewAccount = new InsertNewAccountCommand();
-            IrParaAplicacoes = new IrParaAplicacoesCommand();
-            EditarValorTipoConta = new EditarValorTipoContaCommand();
-
-            //Instanciando Listas
+            //Instanciando Objetos PrincipalView Model
+            BankSelected = new BankInputModel();
+            AccountTypeSelected = new AccountTypeInputModel();
+            ApplicationSelected = new ApplicationInputModel();
             ListaContas = new ObservableCollection<BankInputModel>();
             ListaTiposContas = new ObservableCollection<AccountTypeInputModel>();
             ListaConsolidada = new ObservableCollection<ConsolidatedInputModel>();
@@ -223,29 +271,43 @@ namespace ProjetoOperacoes.ViewModel
             ListaEmAndamento = new ObservableCollection<ProgressApplication>();
             ListaRealizada = new ObservableCollection<AccomplishedInputModel>();
 
-            AccounTypeSelected = new AccountTypeInputModel();
+            //Instanciando Commands
+            CaptureApplication = new CaptureApplicationCommand();
+            GoToNewApplication = new GoToNewApplicationCommand();
+            CreateBank = new CreateBankCommand();
+            ReadBank = new ReadBankCommand();
+            UpdateBank = new UpdateBankCommand();
+            DeleteBank = new DeleteBankCommand();
+            CreateAccountType = new CreateAccountTypeCommand();
+            ReadAccountType = new ReadAccountTypeCommand();
+            UpdateAccountType = new UpdateAccountTypeCommand();
+            DeleteAccountType = new DeleteAccountTypeCommand();
+            CreateApplication = new CreateApplicationCommand();
+            ReadApplication = new ReadApplicationCommand();
+            UpdateApplication = new UpdateApplicationCommand();
+            DeleteApplication = new DeleteApplicationCommand();
 
             //Chamando métodos
             CarregarDados();
         }
         #endregion
 
-        #region Métodos
-        private void CarregarDados()
+        #region 4 - Métodos
+        protected internal void CarregarDados()
         {
-            var lstContas = ServicesPrincipalView.BankList();
+            //var lstContas = ServicesPrincipalView.BankList();
 
-            foreach (var item in lstContas)
-                ListaContas.Add(new BankInputModel(item.ID, item.BankName, item.HexColor, item.Icon, item.Amount));
+            //foreach (var item in lstContas)
+            //    ListaContas.Add(new BankInputModel(item.ID, item.BankName, item.HexColor, item.Icon, item.Amount));
         }
-        private void LimparObservableCollection()
+        protected internal void LimparObservableCollection()
         {
             App.PrincipalViewModel.ListaConsolidada.Clear();
             App.PrincipalViewModel.ListaFutura.Clear();
             App.PrincipalViewModel.ListaEmAndamento.Clear();
             App.PrincipalViewModel.ListaRealizada.Clear();
         }
-        private void LimparValoresViewModel()
+        protected internal void LimparValoresViewModel()
         {
             App.PrincipalViewModel.TotalAtual = 0;
             App.PrincipalViewModel.TotalComFutureApplicationConsolidada = 0;
@@ -256,53 +318,20 @@ namespace ProjetoOperacoes.ViewModel
         }
         #endregion
 
-        #region Classes de Comandos
-        public class IrParaAplicacoesCommand : BaseCommand
+        #region 5 - Classes de Comandos PrincipalViewModel
+        public class CaptureApplicationCommand : BaseCommand
         {
             public override void Execute(object parameter)
             {
-                var tipoContaSelecionado = (AccountTypeInputModel)parameter;
-
-                App.PrincipalViewModel.NameAccountType = tipoContaSelecionado.NameAccountType;
-                App.PrincipalViewModel.Balance = tipoContaSelecionado.Balance.ToString();
-
-                App.PrincipalViewModel.LimparObservableCollection();
-
-                var lstApplication = ServicesPrincipalView.ApplicationListByIdAccountType(tipoContaSelecionado.ID);
-
-                // ConsolidatedList
-                List<ApplicationInputModel> itensConsolidados = lstApplication.FindAll(c => c.ETypeApplication == ETypeApplication.CONSOLIDATED);
-                foreach (var item in itensConsolidados)
-                    App.PrincipalViewModel.ListaConsolidada.Add(new ConsolidatedInputModel());
-
-
+                ApplicationInputModel application = (ApplicationInputModel)parameter;
+                App.PrincipalViewModel.ApplicationSelected = application;
             }
         }
-        public class IrParaTipoContaCommand : BaseCommand
+        public class GoToNewApplicationCommand : BaseCommand
         {
             public override void Execute(object parameter)
             {
-                SelectedAccount = (BankInputModel)parameter;
-
-                var itens = ServicesPrincipalView.AccountsTypeListByIdAccount(SelectedAccount.ID);
-                App.PrincipalViewModel.DadosConta = SelectedAccount.BankName + "   " + SelectedAccount.Amount.ToString("N2", CultureInfo.CurrentCulture);
-
-                App.PrincipalViewModel.LimparObservableCollection();
-                App.PrincipalViewModel.LimparValoresViewModel();
-                App.PrincipalViewModel.ListaTiposContas.Clear();
-
-                foreach (var item in itens)
-                    App.PrincipalViewModel.ListaTiposContas.Add(new AccountTypeInputModel(item.ID, item.IdBank, item.NameAccountType, item.AccountType,/* null, null, null, null,*/ item.Balance));
-            }
-        }
-        public class InsertNewAccountCommand : BaseCommand
-        {
-            public override void Execute(object parameter)
-            {
-                //var itemSelecionado = (BankInputModel)parameter;
-                ServicesPrincipalView.InsertBank(SelectedAccount);
-                App.PrincipalViewModel.ListaContas.Clear();
-                App.PrincipalViewModel.CarregarDados();
+                App.ApplicationPagesViewModel.CurrentPageViewModel = App.ApplicationPagesViewModel.PageViewModels[Paginas.TestePageView];
             }
         }
         #endregion

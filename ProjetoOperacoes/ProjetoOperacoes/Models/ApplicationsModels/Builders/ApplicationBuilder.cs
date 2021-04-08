@@ -4,7 +4,12 @@ namespace ProjetoOperacoes.Models.ApplicationsModels.Builders
 {
     public class ApplicationBuilder : IBuilder
     {
-        private ApplicationModel ApplicationModel;
+        public ApplicationBuilder()
+        {
+            ResetRepeatedId();
+        }
+
+        private ApplicationModel ApplicationModel = new ApplicationModel();
         private string RepeatedId;
 
         public ApplicationModel GetApplication()
@@ -30,37 +35,41 @@ namespace ProjetoOperacoes.Models.ApplicationsModels.Builders
 
         public void SetDescription(string description)
         {
-            throw new System.NotImplementedException();
+            ApplicationModel.Description = description;
         }
 
         public void SetHasInstallments(bool hasInstallments)
         {
-            throw new System.NotImplementedException();
+            ApplicationModel.HasInstallments = hasInstallments;
         }
 
         public void SetPaidInstallments(int paidInstallments)
         {
-            throw new System.NotImplementedException();
+            ApplicationModel.PaidInstallments = paidInstallments;
         }
 
         public void SetInstallments(int installments)
         {
-            throw new System.NotImplementedException();
+            ApplicationModel.Installments = installments;
         }
 
         public void SetIndividualValue(double individualValue)
         {
-            throw new System.NotImplementedException();
+            ApplicationModel.IndividualValue = individualValue;
         }
 
         public void SetTypeApplication(ETypeApplication eTypeApplication)
         {
-            throw new System.NotImplementedException();
+            ApplicationModel.TypeApplication = eTypeApplication;
         }
 
         public void Reset()
         {
             ApplicationModel = new ApplicationModel();
+        }
+
+        public void ResetRepeatedId()
+        {
             RepeatedId = "";
         }
     }

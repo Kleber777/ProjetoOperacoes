@@ -6,9 +6,9 @@ namespace ProjetoOperacoes.InputModels.ApplicationInputModels
     {
         public ApplicationInputModel()
         {
-
+                
         }
-        public ApplicationInputModel(string id, string idAccountType, string repeatedId, string description, bool hasInstallments, int paidInstallments, int installments, double individualValue, double totalValue, ETypeApplication eTypeApplication)
+        public ApplicationInputModel(string id, string idAccountType, string repeatedId, string description, bool hasInstallments, int paidInstallments, int installments, double individualValue, double totalValue, ETypeApplication typeApplication)
         {
             Id = id;
             IdAccountType = idAccountType;
@@ -19,7 +19,7 @@ namespace ProjetoOperacoes.InputModels.ApplicationInputModels
             Installments = installments;
             IndividualValue = individualValue;
             TotalValue = totalValue;
-            ETypeApplication = eTypeApplication;
+            TypeApplication = typeApplication;
         }
 
         public string Id { get; set; }
@@ -31,8 +31,7 @@ namespace ProjetoOperacoes.InputModels.ApplicationInputModels
         public int Installments { get; set; }
         public double IndividualValue { get; set; }
         public double TotalValue { get; private set; }
-
-        public ETypeApplication ETypeApplication;
+        public ETypeApplication TypeApplication { get; set; }
 
     }
 }

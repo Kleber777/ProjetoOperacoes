@@ -63,5 +63,24 @@ namespace ProjetoOperacoes.Models.ApplicationsModels
         [NotMapped]
         public double TotalValue { get; private set; }
 
+        public void UpdateApplication(string idAccountType,
+                                      string repeatedId,
+                                      string description,
+                                      bool hasInstallments,
+                                      int paidInstallments,
+                                      int installments,
+                                      double individualValue,
+                                      ETypeApplication typeApplication)
+        {
+            IdAccountType = idAccountType;
+            RepeatedId = repeatedId;
+            Description = description;
+            HasInstallments = hasInstallments;
+            PaidInstallments = paidInstallments;
+            Installments = installments;
+            IndividualValue = individualValue;
+            TypeApplication = typeApplication;
+
+        }
     }
 }

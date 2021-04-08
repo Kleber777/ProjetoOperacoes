@@ -104,7 +104,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Comandos\EditarValorTipoContaCommand.cs" />
+    <Compile Include="Comandos\AccountTypeCommands\CreateAccountTypeCommand.cs" />
+    <Compile Include="Comandos\AccountTypeCommands\DeleteAccountTypeCommand.cs" />
+    <Compile Include="Comandos\AccountTypeCommands\ReadAccountTypeCommand.cs" />
+    <Compile Include="Comandos\AccountTypeCommands\UpdateAccountTypeCommand.cs" />
+    <Compile Include="Comandos\ApplicationCommands\CreateApplicationCommand.cs" />
+    <Compile Include="Comandos\ApplicationCommands\DeleteApplicationCommand.cs" />
+    <Compile Include="Comandos\ApplicationCommands\ReadApplicationCommand.cs" />
+    <Compile Include="Comandos\ApplicationCommands\UpdateApplicationCommand.cs" />
+    <Compile Include="Comandos\BankCommands\CreateBankCommand.cs" />
+    <Compile Include="Comandos\BankCommands\DeleteBankCommand.cs" />
+    <Compile Include="Comandos\BankCommands\ReadBankCommand.cs" />
+    <Compile Include="Comandos\BankCommands\UpdateBankCommand.cs" />
     <Compile Include="EntityFramework\ApplicationDBContext.cs" />
     <Compile Include="InputModels\ApplicationInputModels\ApplicationInputModel.cs" />
     <Compile Include="InputModels\ApplicationInputModels\Utils\ConsolidatedInputModel.cs" />
@@ -124,13 +135,15 @@
     <Compile Include="Models\AccountTypeModels\EAccountType.cs" />
     <Compile Include="Models\ApplicationsModels\Utils\FutureApplication.cs" />
     <Compile Include="Models\AccountTypeModels\AccountTypeModel.cs" />
-    <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\ApplicationsModels\Utils\ProgressApplication.cs" />
     <Compile Include="Repositories\AccountTypeModelRepository.cs" />
     <Compile Include="Repositories\BankModelRepository.cs" />
     <Compile Include="Repositories\ApplicationRepository.cs" />
     <Compile Include="ResponsiveApplicationConverter.cs" />
-    <Compile Include="Services.cs" />
+    <Compile Include="REMOVER.cs" />
+    <Compile Include="Services\AccountTypeServices\ServicesAccountType.cs" />
+    <Compile Include="Services\ApplicationServices\ServicesApplication.cs" />
+    <Compile Include="Services\BankServices\ServicesBank.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\NavigationPage\ApplicationPagesViewModel.cs" />
