@@ -140,7 +140,6 @@
     <Compile Include="Repositories\BankModelRepository.cs" />
     <Compile Include="Repositories\ApplicationRepository.cs" />
     <Compile Include="ResponsiveApplicationConverter.cs" />
-    <Compile Include="REMOVER.cs" />
     <Compile Include="Services\AccountTypeServices\ServicesAccountType.cs" />
     <Compile Include="Services\ApplicationServices\ServicesApplication.cs" />
     <Compile Include="Services\BankServices\ServicesBank.cs" />

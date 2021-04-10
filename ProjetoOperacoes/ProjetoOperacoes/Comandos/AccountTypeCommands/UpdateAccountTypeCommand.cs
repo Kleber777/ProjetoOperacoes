@@ -1,5 +1,5 @@
-﻿using ProjetoOperacoes.ViewModel;
-using System;
+﻿using ProjetoOperacoes.Services.AccountTypeServices;
+using ProjetoOperacoes.ViewModel;
 
 namespace ProjetoOperacoes.Comandos.AccountTypeCommands
 {
@@ -7,7 +7,9 @@ namespace ProjetoOperacoes.Comandos.AccountTypeCommands
     {
         public override void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            ServicesAccountType.UpdateBalanceAccountType(App.PrincipalViewModel.AccountTypeSelected, App.PrincipalViewModel.NewBalanceAccountType);
+            App.PrincipalViewModel.IsOpenUpdateAccountType = false;
+            ServicesAccountType.ReadAccountTypeList(App.PrincipalViewModel.BankSelected.ID);
         }
     }
 }

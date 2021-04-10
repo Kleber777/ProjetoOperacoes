@@ -1,3 +1,5 @@
+Próximo projeto que eu começar a fazer já começar pelos testes unitários.
+
 Parece que a idéia do Identity de ter um ID onde todas as models herdariam dele não deu muito certo! 
 
 Pelo o que eu entendi a classe pai não pode ser mapeada. 
@@ -9,3 +11,33 @@ Pelo o que eu entendi a classe pai não pode ser mapeada.
         3 - Eu posso criar uma classe somente para representar a tabela que herde da classe pai.
             Assim todas as outras classes não teriam que reescrever as propriedades e eu só teria uma tabela no banco. Acredito que isso não seja uma boa prática. 
             Usando o design pattern constructor eu saberia exatamente qual registro eu estaria incluindo no banco. Filtrarei por todas os meus tipos de aplicação através do campo typeapplication.
+
+o repeatedId pode ser um id que se repete para o registro principal ou eu posso passar ele em branco. Ele só deve aparecer 
+3 vezez no campo repeated id.
+
+e se as outras classes fazem sentido, talvez seja possível tirar a herança. 
+
+O repeatedId pode ser gerado pelo builder ou na hora de inserir no banco. 
+    inserindo pelo banco 
+        eu criaria primeiro a conta normal depois puxaria do banco e criaria a em progresso com o id da conta normal que eu puxei 
+        do banco 
+
+    inserindo pelo builder 
+        o chato é que tem uma sobrecarga na interface e no builder. 
+        e eu tenho que chamar o Guid.NewGuid() no Director. 
+
+    no builder eu deixaria armazenado em uma variável e passaria em uma sobrecarga sem parâmetros. 
+
+testar sem o repeatedId sem parâmetros
+
+
+Passar somente (no máximo) em ApplicationModel os parâmetros idAccountType, description, installments e individualValue
+    nessa primeira versão o usuário não poderá criar uma parcela em progresso já com parcelas pagas (ele terá que editar depois)
+    no caso de não ser aplicações em progresso não informar o installments no parametro pois o valor padrão será definido que é 1. 
+    eu saberei se é uma despesa em progresso ou não através da tela assim como se é futura ou consolidada
+    problema de passar somente esse parametros em consolidada ou futura é que quando eu tenho uma aplicação em progresso ocorre divergência na questão das 
+    parcelas.
+    Quando eu crio qualquer tipo de conta que tem uma parcela o consolidada ou futura não pega o valor total das parcelas ele 
+    seta por padrão uma parcela apenas, devo corrigir isso... (isso afeta bastante o cálculo das parcelas)
+    Posso quando criar a aplicação em progresso editar no banco através do código puxando pelo repeated id 
+    Tenho que editar também o HasInstallments e colocar igual a true nesse cenário. 

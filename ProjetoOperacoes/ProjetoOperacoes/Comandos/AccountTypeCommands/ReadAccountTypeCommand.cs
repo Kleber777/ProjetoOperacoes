@@ -11,7 +11,7 @@ namespace ProjetoOperacoes.Comandos.AccountTypeCommands
         {
             App.PrincipalViewModel.BankSelected = (BankInputModel)parameter;
 
-            var itens = ServicesAccountType.AccountsTypeListByIdAccount(App.PrincipalViewModel.BankSelected.ID);
+            var itens = ServicesAccountType.ReadAccountTypeList(App.PrincipalViewModel.BankSelected.ID);
             App.PrincipalViewModel.DadosConta = App.PrincipalViewModel.BankSelected.BankName + "   " + App.PrincipalViewModel.BankSelected.Amount.ToString("N2", CultureInfo.CurrentCulture);
 
             App.PrincipalViewModel.LimparObservableCollection();

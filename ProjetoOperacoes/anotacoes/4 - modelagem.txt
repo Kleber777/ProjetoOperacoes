@@ -44,3 +44,16 @@ string descricao
 int parcelas
 decimal valorMensal 
 decimal valorTotalDestinado
+
+ViewModel 
+    Services 
+    Commands
+
+Commands --> In the reason its don't return a type
+    ViewModel Propertiers
+    Services 
+
+Services 
+    don't access the viewModel properties
+    don't access commands 
+    access only repositories and inputmodels, and return type model.

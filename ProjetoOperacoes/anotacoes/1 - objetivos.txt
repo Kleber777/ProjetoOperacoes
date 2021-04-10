@@ -1,77 +1,49 @@
-Ver uma maneira de como carregar os dados agora com os commands não estando na viewmodel. (X)
-Método CarregarDados da PrincipalViewModel está comentado. Ver isso com urgência. 
-Colocar nomes exatos dos commands na suas respectivas views. 
-Depois fazer teste para validação (caso passe algum objeto vazio / coisa do tipo) ()
+Fazer validação dos fluxo das telas. () Quando eu criar uma nova despesas / quando eu atualizar o saldo quando criar um banco. Atualizar Bancos, tipos de contas e 
+aplicações / despesas. 
+Application falta o update () -- CRD
+Accountype falta o create e o delete () -- RU
+Bank falta o update e o delete () -- UD
 
-Passar os dados corretamente para cada inputmodel application. 
-Terminar Crud Application (falta Select, update, delete) (X) 
-Atualizar toda a vez a tela depois de fazer uma edição ou criação ou remoção. ()
-Terminar o Create Application passando o id do application type. (X)
-
-Pensar em criar um método em cada view para converter o que vem da tela e passar para o service.
-Não estou sendo muito fã dessa idéia de fazer calculos na camada de visualização.
-Fazer validação dos fluxo das telas. Como por exemplo com urgência o idaccounttype. 
-Arrumar o fluxo de comportamento das telas isso é muito importante. 
-
-
-Pensar se vale a pena passar um ApplicationInputModel no InsertApplication no Services... (Por enquanto deixar redundante)
-
-
-1 - Fazer resumo do design pattern constructor -- pois vou começar a criar / editar / remover os diferentes tipos de apliação do banco.
+Pensar em criar um método em cada view para converter e validar o que vem da tela e passar para o service. ()
+Verificar o que pode ser editado nas aplicações / despesas ()
+Terminar Crud Application () falta o update.
+    O editar aplicação até agora eu vi a necessidade de editar 
+    o valor da despesa 
+    o nome da despesa 
+    trocar de banco 
+    e a quantidade de parcelas paga 
+    e se a  divida foi quitada ou não. 
+Fazer validação de ter somente 3 repeated id no banco com tipos de aplicações diferentes ()
+Mostrar total de todas os bancos juntos ()
+Mostrar as diferenças das contas ()
+refatorar createcommandapplication -- pois ele está chamando o services passando a model direto ao invés do inputmodel. ()
+Criar um comando chamado capture bank ()
+Fazer os totais de quanto sobra em cada coisa ()
+Implementar testes unitários no projeto ()
+Adicionar uma lista ao invés de somente um item para as aplicações / despesas. Usando entity framework. ()
+Atualizar os documentos de requisitos. ()
+Definir sprint. ()
 Será se as models subclasses serão mesmo necessárias?! ()
-Adicionar uma lista ao invés de somente um item para as aplicações / despesas. Usando entity framework. 
-Atualizar os documentos de requisitos. 
-Definir sprint. 
-Passar somente (no máximo) em ApplicationModel os parâmetros idAccountType, description, installments e individualValue
-    nessa primeira versão o usuário não poderá criar uma parcela em progresso já com parcelas pagas (ele terá que editar depois)
-    no caso de não ser aplicações em progresso não informar o installments no parametro pois o valor padrão será definido que é 1. 
-    eu saberei se é uma despesa em progresso ou não através da tela assim como se é futura ou consolidada
-
-    VISTO QUE É O DIRECTOR QUE CRIA O ITEM QUE EU QUERO EU TENHO QUE ARRUMAR A MINHA CLASSE QUE IMPLEMENTA A INTERFACE 
-        BUILDER E DEFINIR MELHOR O QUE TEM QUE TER NO MEU IBuilder...
-
-o repeatedId pode ser um id que se repete para o registro principal ou eu posso passar ele em branco. Ele só deve aparecer 
-3 vezez no campo repeated id.
-
-e se as outras classes fazem sentido, talvez seja possível tirar a herança. 
-
-O repeatedId pode ser gerado pelo builder ou na hora de inserir no banco. 
-    inserindo pelo banco 
-        eu criaria primeiro a conta normal depois puxaria do banco e criaria a em progresso com o id da conta normal que eu puxei 
-        do banco 
-
-    inserindo pelo builder 
-        o chato é que tem uma sobrecarga na interface e no builder. 
-        e eu tenho que chamar o Guid.NewGuid() no Director. 
-
-    no builder eu deixaria armazenado em uma variável e passaria em uma sobrecarga sem parâmetros. 
-
-testar sem o repeatedId sem parâmetros
-
-Fazer somente uma chamada no banco e na viewmodel preencher uma lista e sair distribuindo somente de acordo com o enum. 
-
-Devo ter uma seção aplicação onde terá 2 botões 1 nova aplicação e outro informação a respeito das aplicações. ()
-Quanto o count de qualquer aplicação for igual a zero não mostrar a seção aplicação.
-Não posso criar uma aplicação em andamento. Ela é criada automaticamente pelo sistema quando o HasInstallments é igual a true. 
-Nem tampouco posso criar um aplicação realizada a não ser que tenha um item existente nas outras duas aplicações (futuras ou consolidadas). 
-aplicações consolidades que tem a propriedade HasInstallments = true. Deve ter uma cor de fundo diferente. 
-aplicação consolidade mostra sempre o valor cheio. 
-aplicação em andamento deve mostrar quantas parcelas foram pagas, quantas faltam e a diferença entre isso.
-aplicação em andamento só posso editar o valor da parcela paga somente isso. As outras ações eu tenho que fazer pela Aplicação consolidada.
-
-
+Nem tampouco posso criar um aplicação realizada a não ser que tenha um item existente nas outras duas aplicações futuras ou consolidadas(). 
+cada aplicações consolidadas que tem a propriedade HasInstallments = true. Deve ter uma cor de fundo diferente. definirei a cor de acordo com o repeatedid()
+Passar os dados corretamente para cada inputmodel application. ()
+aplicação consolidada mostra sempre o valor atual da despesas que está em progresso com o total de parcelas feitas no início da criação ()
+aplicação em andamento deve mostrar quantas parcelas foram pagas, quantas faltam ()
+aplicação em andamento não edito, somente vejo. Irei editar sempre pelas aplicações / despesas consolidadas ou futuras () 
+Quanto o count de qualquer aplicação for igual a zero não mostrar a seção aplicação. () -- ter um visible em cada stack panel
+O botão informações irá servir para mostrar informações dos itens das aplicações / despesas ()
+Trocar o nome das listas da PrincipalViewModel para inglês ();
+Implementar SOLID () -- nas models
+Implementar Chain of responsibility () Nas exclusões sequências
+Mostrar somente nas aplicações a descrição e o detalhe ()
+Trocar na tela a palavra aplicação para despesas ()
+remover campo amount da tabela tb_bank ()
+Arrumar tela UX ()
 
 Como que ficaria no realizada uma aplicação que estava como futura e simplesmente mudou para consolidada?!  ()
     Pronto nas aplicações realizadas eu mostro um extrato detalhado do comportamento de todas as realizações. Isso mesmo assim fica muito loko. 
 
-Trocar o nome das listas da PrincipalViewModel para inglês...();
-Services devolver um observable collection, vale a pena?! ()
-
-Chain of responsibility -- na hora de excluir os dados por cascata.
-
-Constructor -- na hora de criar os diferentes tipos de aplicações. 
-        
-        
-Nos quadros das aplicações eu edito / removo/ crio o item da aplicação não a aplicação toda. 
-
-Amount do bankmodel não pode ser salvo no banco, sendo necessário somente contabiliza-lo em execução. ()
+Quando eu crio qualquer tipo de conta que tem uma parcela o consolidada ou futura não pega o valor total das parcelas ele 
+seta por padrão uma parcela apenas, devo corrigir isso... (isso afeta bastante o cálculo das parcelas)
+    Posso quando criar a aplicação em progresso editar no banco através do código puxando pelo repeated id 
+    Tenho que editar também o HasInstallments e colocar igual a true nesse cenário. 

@@ -77,15 +77,15 @@ namespace ProjetoOperacoes.Repositories
             {
                 using (var db = new ApplicationDBContext())
                 {
+                    db.ApplicationDbSet.Attach(obj);
                     db.ApplicationDbSet.Remove(obj);
                     db.SaveChanges();
                 }
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
-                throw;
+                throw ex;                
             }
 
         }

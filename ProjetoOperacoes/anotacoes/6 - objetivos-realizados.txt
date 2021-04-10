@@ -1,1 +1,12 @@
 1 - Trocar o nome tb_account para tb_bank (X)
+2 - Services devolver um observable collection, vale a pena?! (X) -- Não pois na principal view model é esperado tipo genérico e lá 
+    será distribuido para cada tipo de apliação um observable collection diferente.
+3 -  Amount do bankmodel não pode ser salvo no banco, sendo necessário somente contabiliza-lo em execução. (X)
+4 - Fazer somente uma chamada no banco e na viewmodel preencher uma lista e sair distribuindo somente de acordo com o enum. (X)
+5 - Não posso criar uma aplicação em andamento. Ela é criada automaticamente pelo sistema quando o HasInstallments é igual a true. (X)
+6 - Terminar o Create Application passando o id do application type. (X)
+7 - Ver uma maneira de como carregar os dados agora com os commands não estando na viewmodel. (X)
+8 - Método CarregarDados da PrincipalViewModel está comentado. Ver isso com urgência. (X)
+9 - Colocar nomes exatos dos commands na suas respectivas views. (X)
+10 - criar os botões e chamar o comando captureapplication  (X)
+11 - 

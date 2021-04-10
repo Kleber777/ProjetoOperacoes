@@ -11,6 +11,14 @@ namespace ProjetoOperacoes.Models.AccountTypeModels
 
         }
 
+        public AccountTypeModel(string idBank, string nameAccountType, EAccountType accountType, double balance)
+        {
+            IdBank = idBank;
+            NameAccountType = nameAccountType;
+            AccountType = accountType;
+            Balance = balance;
+        }
+
         [Column("id")]
         public string ID { get; set; }
 
@@ -25,5 +33,19 @@ namespace ProjetoOperacoes.Models.AccountTypeModels
         
         [Column("balance")]
         public double Balance { get; set; }
+
+        public void UpdateAccounTypeModel(string id,
+                                          string idBank, 
+                                          string nameAccountType, 
+                                          EAccountType accountType, 
+                                          double balance)
+        {
+            ID = id;
+            IdBank = idBank;
+            NameAccountType = nameAccountType;
+            AccountType = accountType;
+            Balance = balance;
+
+        }
     }
 }

@@ -5,3 +5,5 @@ Como converter enum (por padrão é int) para string?!
 Quando se trabalha com builder a classe representada pela model precisa mesmo de um construtor recebendo todos os itens?! 
     Acredito que não seja tão necessário. Passarei então o objeto inteiro e preencherei somente o Id. O bom de passar tudo é 
     que fica mais visível de ver o model que será salva no banco de dados.
+
+Como inserir uma lista no entity framework ao invés de inserir item por item. 

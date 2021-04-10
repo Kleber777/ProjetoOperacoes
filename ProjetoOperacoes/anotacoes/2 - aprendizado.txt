@@ -21,3 +21,11 @@ No padrão builder os components são classes / enums (associações do objeto p
 A interface builder pega todos os parametros necessários e transforma em métodos onde a classe implementadora irá definir 
 propriedade por propriedade. 
 E o director é como serão passados e quais métodos serão necessários ser chamados.
+
+It means that entity is not attached (it was not loaded by the same context instance). Try this:
+
+Tem que terminar todo o comando primeiro para depois chamar o construtor. Por consenquência disso por isso que ele executa o método que é chamado 
+no comando antes do construtor da classe, mesmo a linha do método estando após a trocada de página. 
+
+Para atualizar uma entidade com entity framework devemos usar o namespace 'using System.Data.Entity.Migrations;' e chamar 
+o método AddOrUpdate() através  dbcontext .

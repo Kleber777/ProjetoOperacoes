@@ -10,7 +10,7 @@ namespace ProjetoOperacoes.Comandos.ApplicationCommands
         {
             ApplicationInputModel application = App.PrincipalViewModel.ApplicationSelected;
             ServicesApplication.DeleteApplication(application);
-
+            App.PrincipalViewModel.CarregarListasAplicacoes();
         }
     }
 }

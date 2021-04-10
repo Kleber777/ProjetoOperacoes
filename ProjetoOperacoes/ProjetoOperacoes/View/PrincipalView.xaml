@@ -534,7 +534,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Background="#F1F0F7" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                                    <Button  Style="{StaticResource BotaoMenuProdutos}" Command="{Binding ElementName=listaProdutoView,  Path=DataContext.IrParaTipoConta}" CommandParameter="{Binding}" Click="AtualizarViewModel_Click">
+                                    <Button  Style="{StaticResource BotaoMenuProdutos}" Command="{Binding ElementName=listaProdutoView,  Path=DataContext.ReadAccountType}" CommandParameter="{Binding}" Click="AtualizarViewModel_Click">
                                         <Border Style="{StaticResource BordaBotao}">
                                             <StackPanel>
                                                 <BulletDecorator Style="{StaticResource BulletDecoratorButton}"/>
@@ -589,7 +589,7 @@
                 <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="lstListaTiposContas" ItemsSource="{Binding ListaTiposContas}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Button Command="{Binding ElementName=lstListaTiposContas,  Path=DataContext.IrParaAplicacoes}" CommandParameter="{Binding .}" HorizontalAlignment="Center" Width="750" HorizontalContentAlignment="Left">
+                            <Button Command="{Binding ElementName=lstListaTiposContas,  Path=DataContext.ReadApplication}" CommandParameter="{Binding .}" HorizontalAlignment="Center" Width="750" HorizontalContentAlignment="Left">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding NameAccountType}"/>
                                     <TextBlock Text=" "/>
@@ -611,7 +611,7 @@
                 <StackPanel Background="White" Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2">
                     <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="{Binding NameAccountType}" Margin="0, 0, 10, 0"/>
                     <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="{Binding Balance}" Margin="0, 0, 10, 0"/>
-                    <Button Foreground="Black" HorizontalAlignment="Center" Width="50" Command="{Binding EditarValorTipoConta}" CommandParameter="{Binding Balance}"/>
+                    <Button Foreground="Black" HorizontalAlignment="Center" Width="50" Command="{Binding UpdateBalanceAccountType}" Content="Atualizar Saldo"/>
                 </StackPanel>
                 
             </Grid>
@@ -640,9 +640,9 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="APLICAÇÕES CONSOLIDADAS"/>
                         <Button Grid.Column="2" Content="Informação"/>
-                        <Button Grid.Column="4" Content="Novo" Command="{Binding InsertNewApplication}"/>
-                        <Button Grid.Column="6" Content="Editar" Command="{Binding EditApplication}"/>
-                        <Button Grid.Column="8" Content="Remover"/>
+                        <Button Grid.Column="4" Content="Novo" Command="{Binding GoToNewApplication}"/>
+                        <Button Grid.Column="6" Content="Editar" Command="{Binding UpdateApplication}"/>
+                        <Button Grid.Column="8" Content="Remover" Command="{Binding DeleteApplication}"/>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <TextBlock Text="DESCRIÇÃO" Width="400"/>
@@ -650,29 +650,29 @@
                         <TextBlock Text="VALOR INDIVIDUAL" Width="100"/>
                         <TextBlock Text="VALOR TOTAL" Width="100" HorizontalAlignment="Right"  Margin="20, 0, 0, 0"/>
                     </StackPanel>
-
-                    <ListView Grid.Row="2" x:Name="lstAplicacaoConsolidada" ItemsSource="{Binding ListaConsolidada}">
+                    <ListView Grid.Row="2" x:Name="lstAplicacaoConsolidada" ItemsSource="{Binding ListaConsolidada}" Height="120" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Button Command="{Binding ElementName=lstAplicacaoConsolidada,  Path=DataContext.CaptureEditApplication}" CommandParameter="{Binding .}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="400"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Text="{Binding Description}"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding Installments}"/>
-                                        <TextBlock Grid.Column="2" Text="{Binding IndividualValue}"/>
-                                        <TextBlock Grid.Column="3" Text="{Binding TotalValue}"/>
-                                    </Grid>
-                                </Button>
+                                    <Button Command="{Binding ElementName=lstAplicacaoConsolidada,  Path=DataContext.CaptureApplication}" CommandParameter="{Binding .}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="400"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding Description}"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Installments}"/>
+                                            <TextBlock Grid.Column="2" Text="{Binding IndividualValue}"/>
+                                            <TextBlock Grid.Column="3" Text="{Binding TotalValue}"/>
+                                        </Grid>
+                                    </Button>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+
                     </ListView>
-                    <TextBlock Grid.Row="3" Text="Total Aplicações Futuras Consolidadas"/>
-                    <TextBlock Grid.Row="3" Text="{Binding TotalComFutureApplicationConsolidada}" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Row="3" Text="Total Aplicações Consolidadas"/>
+                    <TextBlock Grid.Row="3" Text="{Binding TotalConsolidatedApplication}" HorizontalAlignment="Right"/>
                 </Grid>
             </Border>
 
@@ -774,7 +774,7 @@
             </Border>
 
             <!--CONTENT TOTAIS-->
-            <Border Grid.Row="6" Margin="0, 10, 0, 0" Width="900" BorderThickness="2" BorderBrush="Black">
+            <Border Grid.Row="6" Margin="0, 10, 0, 0" Width="600" BorderThickness="2" BorderBrush="Black">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -800,8 +800,8 @@
                             <TextBlock Text="TOTAL ATUAL: "/>
                             <TextBlock HorizontalAlignment="Center" Grid.Column="1" Text="{Binding TotalAtual, StringFormat=N2, ConverterCulture=pt-br}"/>
 
-                            <TextBlock Grid.Row="1" Text="Total com aplicação futura consolidada"/>
-                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="{Binding TotalComFutureApplicationConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
+                            <TextBlock Grid.Row="1" Text="Total consolidada"/>
+                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Text="{Binding TotalConsolidatedApplication, StringFormat=N2, ConverterCulture=pt-br}"/>
 
                             <TextBlock Grid.Row="2" Text="TOTAL COM APLICAÇÃO FUTURA"/>
                             <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Text="{Binding TotalComFutureApplication, StringFormat=N2, ConverterCulture=pt-br}"/>
@@ -824,8 +824,8 @@
                             <TextBlock Text="FINAL ATUAL: "/>
                             <TextBlock Grid.Column="1" Text="{Binding FinalTotalAtual, StringFormat=N2, ConverterCulture=pt-br}"/>
 
-                            <TextBlock Grid.Row="1" Text="Final com aplicação futura consolidada"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FinalTotalComFutureApplicationConsolidada, StringFormat=N2, ConverterCulture=pt-br}"/>
+                            <TextBlock Grid.Row="1" Text="Saldo Final consolidadas"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FinalBalanceConsolidatedApplication, StringFormat=N2, ConverterCulture=pt-br}"/>
 
                             <TextBlock Grid.Row="2" Text="FINAL COM APLICAÇÃO FUTURA"/>
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding FinalTotalComFutureApplication, StringFormat=N2, ConverterCulture=pt-br}"/>
@@ -835,5 +835,17 @@
             </Border>
 
         </Grid>
+
+        <Popup Placement="Center" IsOpen="{Binding IsOpenUpdateAccountType}" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Height="200">
+            <StackPanel>
+                <Label Content="Digite o novo valor"/>
+                <TextBox Text="{Binding NewBalanceAccountType}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Salvar" Command="{Binding UpdateAccountType}"/>
+                    <Button Content="Cancelar" Command="{Binding CancelUpdateBalanceAccountType}"/>
+                </StackPanel>
+            </StackPanel>
+        </Popup>
+
     </Grid>
 </UserControl>

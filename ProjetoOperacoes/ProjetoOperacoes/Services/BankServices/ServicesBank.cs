@@ -23,7 +23,7 @@ namespace ProjetoOperacoes.Services.BankServices
 
             foreach (var item in lstContas)
             {
-                var teste = accountTypeRepository.AccountTypesList(item.ID);
+                var teste = accountTypeRepository.ReadAccountTypeList(item.ID);
 
                 foreach (var iten in teste)
                     item.Amount += iten.Balance;

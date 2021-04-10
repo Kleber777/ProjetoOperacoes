@@ -41,7 +41,7 @@ namespace ProjetoOperacoes.Models.ApplicationsModels.Directors
         {
             builder.SetIdAccountType(idAccountType);
             builder.SetDescription(description);
-            builder.SetHasInstallments(false);
+            builder.SetHasInstallments(true);
             builder.SetPaidInstallments(0);
             builder.SetInstallments(installments);
             builder.SetIndividualValue(individualValue);
